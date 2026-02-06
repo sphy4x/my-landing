@@ -15,6 +15,23 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(255,255,255,0.95);
+    border-bottom: 1px solid #ddd;
+}
+
+header .logo h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #0077b6; /* цвет TECNOHOME */
+    margin: 0;
+    letter-spacing: 1px;
+}
+
 /* Стили секций с анимацией */
 section {
     opacity: 0;
