@@ -1,172 +1,180 @@
-// Мультиязычные тексты
 const translations = {
-    ru: {
-        heroTitle: "Ремонт и отделка под ключ",
-        heroDesc: "Быстро, качественно и с гарантией",
-        heroButton: "Связаться",
+  ru: {
+    navPortfolio: "Работы",
+    navAdvantages: "Преимущества",
+    navProcess: "Процесс",
+    navReviews: "Отзывы",
+    navContact: "Контакты",
 
-        advantagesTitle: "Наши преимущества",
-        advantage1: "Собственные мастера",
-        advantage2: "Фиксированная смета",
-        advantage3: "Сроки под контролем",
+    heroTitle: "Ремонт и отделка под ключ",
+    heroDesc: "Современные решения. Чёткие сроки. Прозрачная смета.",
+    heroButton: "Связаться",
 
-        servicesTitle: "Услуги",
-        service1: "Капитальный ремонт квартиры",
-        service2: "Косметический ремонт",
-        service3: "Дизайн-проект интерьера",
+    portfolioTitle: "Примеры работ",
+    portfolio1: "Квартира под ключ",
+    portfolio2: "Косметический ремонт",
+    portfolio3: "Дизайн интерьера",
+    portfolio4: "Ремонт кухни",
+    portfolio5: "Ванная комната",
+    portfolio6: "Коммерческие объекты",
 
-        reviewsTitle: "Отзывы клиентов",
-        reviewsFormTitle: "Оставить отзыв",
-        submitButton: "Отправить",
-        reviewName: "Имя",
-        reviewText: "Ваш отзыв",
-        clearReviewsButton: "Очистить все отзывы",
+    advantagesTitle: "Почему выбирают нас",
+    advantage1: "Собственные мастера",
+    advantage2: "Фиксированная стоимость",
+    advantage3: "Контроль сроков",
 
-        processTitle: "Как мы работаем",
-        step1: "Консультация и замер",
-        step2: "Заключение договора",
-        step3: "Реализация проекта",
+    processTitle: "Как мы работаем",
+    step1: "Консультация и замер",
+    step2: "Согласование и договор",
+    step3: "Реализация проекта",
 
-        contactTitle: "Контакты",
-        contactDesc: "Напишите нам: example@mail.com",
+    reviewsTitle: "Отзывы клиентов",
+    reviewsFormTitle: "Оставить комментарий",
+    submitButton: "Отправить",
+    clearReviewsButton: "Очистить",
+    reviewName: "Имя",
+    reviewText: "Комментарий",
 
-        footerText: "Все права защищены © 2026"
-    },
-    en: {
-        heroTitle: "Renovation & Finishing",
-        heroDesc: "Fast, high-quality, guaranteed",
-        heroButton: "Contact Us",
+    contactTitle: "Контакты",
+    contactDesc: "example@mail.com",
 
-        advantagesTitle: "Our Advantages",
-        advantage1: "Own specialists",
-        advantage2: "Fixed estimate",
-        advantage3: "Deadline control",
+    footerText: "© 2026 TECNOHOME"
+  },
+  en: {
+    navPortfolio: "Portfolio",
+    navAdvantages: "Advantages",
+    navProcess: "Process",
+    navReviews: "Reviews",
+    navContact: "Contact",
 
-        servicesTitle: "Services",
-        service1: "Full apartment renovation",
-        service2: "Cosmetic renovation",
-        service3: "Interior design project",
+    heroTitle: "Renovation & Finishing",
+    heroDesc: "Modern solutions. Clear deadlines. Transparent pricing.",
+    heroButton: "Contact",
 
-        reviewsTitle: "Customer Reviews",
-        reviewsFormTitle: "Leave a review",
-        submitButton: "Submit",
-        reviewName: "Name",
-        reviewText: "Your review",
-        clearReviewsButton: "Clear All Reviews",
+    portfolioTitle: "Our Work",
+    portfolio1: "Turnkey apartment",
+    portfolio2: "Cosmetic renovation",
+    portfolio3: "Interior design",
+    portfolio4: "Kitchen renovation",
+    portfolio5: "Bathroom",
+    portfolio6: "Commercial spaces",
 
-        processTitle: "How we work",
-        step1: "Consultation and measurement",
-        step2: "Contract signing",
-        step3: "Project execution",
+    advantagesTitle: "Why us",
+    advantage1: "In-house specialists",
+    advantage2: "Fixed pricing",
+    advantage3: "Deadline control",
 
-        contactTitle: "Contact",
-        contactDesc: "Write to us: example@mail.com",
+    processTitle: "How we work",
+    step1: "Consultation & measurement",
+    step2: "Agreement & contract",
+    step3: "Project execution",
 
-        footerText: "All rights reserved © 2026"
-    },
-    gr: {
-        heroTitle: "Ανακαινίσεις & Τελειώματα",
-        heroDesc: "Γρήγορα, ποιοτικά και με εγγύηση",
-        heroButton: "Επικοινωνία",
+    reviewsTitle: "Client reviews",
+    reviewsFormTitle: "Leave a comment",
+    submitButton: "Submit",
+    clearReviewsButton: "Clear",
+    reviewName: "Name",
+    reviewText: "Comment",
 
-        advantagesTitle: "Τα Πλεονεκτήματά μας",
-        advantage1: "Ιδιόκτητοι τεχνίτες",
-        advantage2: "Σταθερός προϋπολογισμός",
-        advantage3: "Έλεγχος προθεσμιών",
+    contactTitle: "Contact",
+    contactDesc: "example@mail.com",
 
-        servicesTitle: "Υπηρεσίες",
-        service1: "Ολική ανακαίνιση διαμερίσματος",
-        service2: "Απλή ανακαίνιση",
-        service3: "Σχέδιο εσωτερικού χώρου",
+    footerText: "© 2026 TECNOHOME"
+  },
+  gr: {
+    navPortfolio: "Έργα",
+    navAdvantages: "Πλεονεκτήματα",
+    navProcess: "Διαδικασία",
+    navReviews: "Κριτικές",
+    navContact: "Επικοινωνία",
 
-        reviewsTitle: "Κριτικές Πελατών",
-        reviewsFormTitle: "Αφήστε ένα σχόλιο",
-        submitButton: "Αποστολή",
-        reviewName: "Όνομα",
-        reviewText: "Το σχόλιό σας",
-        clearReviewsButton: "Διαγραφή όλων των σχολίων",
+    heroTitle: "Ανακαινίσεις & Τελειώματα",
+    heroDesc: "Σύγχρονες λύσεις. Σαφή χρονοδιαγράμματα.",
+    heroButton: "Επικοινωνία",
 
-        processTitle: "Πώς δουλεύουμε",
-        step1: "Συμβουλευτική και μέτρηση",
-        step2: "Υπογραφή σύμβασης",
-        step3: "Εκτέλεση έργου",
+    portfolioTitle: "Έργα",
+    portfolio1: "Διαμέρισμα",
+    portfolio2: "Απλή ανακαίνιση",
+    portfolio3: "Σχεδιασμός",
+    portfolio4: "Κουζίνα",
+    portfolio5: "Μπάνιο",
+    portfolio6: "Επαγγελματικοί χώροι",
 
-        contactTitle: "Επικοινωνία",
-        contactDesc: "Γράψτε μας: example@mail.com",
+    advantagesTitle: "Γιατί εμάς",
+    advantage1: "Ιδιόκτητοι τεχνίτες",
+    advantage2: "Σταθερή τιμή",
+    advantage3: "Έλεγχος χρόνου",
 
-        footerText: "Όλα τα δικαιώματα διατηρούνται © 2026"
-    }
+    processTitle: "Πώς δουλεύουμε",
+    step1: "Συμβουλευτική",
+    step2: "Σύμβαση",
+    step3: "Υλοποίηση",
+
+    reviewsTitle: "Κριτικές",
+    reviewsFormTitle: "Αφήστε σχόλιο",
+    submitButton: "Αποστολή",
+    clearReviewsButton: "Καθαρισμός",
+    reviewName: "Όνομα",
+    reviewText: "Σχόλιο",
+
+    contactTitle: "Επικοινωνία",
+    contactDesc: "example@mail.com",
+
+    footerText: "© 2026 TECNOHOME"
+  }
 };
 
-// Мультиязычная логика
+// language
 const elements = document.querySelectorAll("[data-i18n]");
+const placeholders = document.querySelectorAll("[data-i18n-placeholder]");
 const buttons = document.querySelectorAll(".lang-switch button");
 
-function setLanguage(lang) {
-    elements.forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        el.textContent = translations[lang][key];
-    });
-    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-        const key = el.getAttribute("data-i18n-placeholder");
-        el.placeholder = translations[lang][key];
-    });
+function setLang(lang) {
+  elements.forEach(el => el.textContent = translations[lang][el.dataset.i18n]);
+  placeholders.forEach(el => el.placeholder = translations[lang][el.dataset.i18nPlaceholder]);
+  localStorage.setItem("lang", lang);
+}
+buttons.forEach(b => b.onclick = () => setLang(b.dataset.lang));
+setLang(localStorage.getItem("lang") || "ru");
 
-    localStorage.setItem("lang", lang);
+// scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("visible");
+      observer.unobserve(e.target);
+    }
+  });
+},{ threshold: 0.15 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// reviews
+const list = document.getElementById("reviews-list");
+let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+function renderReview(r) {
+  const d = document.createElement("div");
+  d.className = "review";
+  d.innerHTML = `<strong>${r.name}</strong><p>${r.text}</p>`;
+  list.prepend(d);
 }
 
-buttons.forEach(btn => {
-    btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
-});
+reviews.forEach(renderReview);
 
-const savedLang = localStorage.getItem("lang") || "ru";
-setLanguage(savedLang);
+document.getElementById("submit-review").onclick = () => {
+  const name = document.getElementById("reviewer-name").value.trim();
+  const text = document.getElementById("review-text").value.trim();
+  if (!name || !text) return;
+  const r = { name, text };
+  reviews.unshift(r);
+  localStorage.setItem("reviews", JSON.stringify(reviews));
+  renderReview(r);
+  document.getElementById("reviewer-name").value = "";
+  document.getElementById("review-text").value = "";
+};
 
-// Динамические отзывы
-const reviewsList = document.getElementById("reviews-list");
-const submitBtn = document.getElementById("submit-review");
-const clearBtn = document.getElementById("clear-reviews");
-
-let savedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
-savedReviews.forEach(r => addReviewToDOM(r.name, r.text));
-
-function addReviewToDOM(name, text) {
-    const div = document.createElement("div");
-    div.classList.add("review");
-    div.innerHTML = `<strong>${name}</strong>: <p>${text}</p>`;
-    reviewsList.prepend(div);
-    div.style.animation = "reviewFadeIn 0.5s ease forwards";
-}
-
-submitBtn.addEventListener("click", () => {
-    const name = document.getElementById("reviewer-name").value.trim();
-    const text = document.getElementById("review-text").value.trim();
-    if(name && text) {
-        addReviewToDOM(name, text);
-        savedReviews.unshift({ name, text });
-        localStorage.setItem("reviews", JSON.stringify(savedReviews));
-        document.getElementById("reviewer-name").value = "";
-        document.getElementById("review-text").value = "";
-    } else {
-        const lang = localStorage.getItem("lang") || "ru";
-        const messages = {
-            ru: "Введите имя и текст отзыва",
-            en: "Enter name and review text",
-            gr: "Εισάγετε όνομα και κείμενο σχολίου"
-        };
-        alert(messages[lang]);
-    }
-});
-
-clearBtn.addEventListener("click", () => {
-    const lang = localStorage.getItem("lang") || "ru";
-    const messages = {
-        ru: "Вы точно хотите удалить все отзывы?",
-        en: "Are you sure you want to delete all reviews?",
-        gr: "Είστε σίγουροι ότι θέλετε να διαγράψετε όλα τα σχόλια;"
-    };
-    if(confirm(messages[lang])) {
-        localStorage.removeItem("reviews");
-        reviewsList.innerHTML = "";
-    }
-});
+document.getElementById("clear-reviews").onclick = () => {
+  localStorage.removeItem("reviews");
+  list.innerHTML = "";
+};
