@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Εγκαταστάσεις και επισκευές ηλεκτρικών κυκλωμάτων."
       ],
       aboutTitle: "Σχετικά με εμάς",
-      aboutText: "Η TechnoHome αναλαμβάνει ολοκληρωμένες ή μερικές ανακαινίσεις, με έμφαση στην ποιότητα και αξιοπιστία. Η εμπειρία μας σε κάθε έργο εξασφαλίζει πλήρη ικανοποίηση των πελατών.",
+      aboutText: "Η Η TechnoHome αναλαμβάνει εργασίες επισκευής και κατασκευής στη Θεσσαλονίκη και στις κοντινές περιοχές. Αναλαμβάνουμε τόσο μεμονωμένες εργασίες όσο και ανακαινίσεις με το κλειδί στο χέρι — από τις αρχικές (χονδρές) εργασίες έως την τελική διαμόρφωση. Δουλεύουμε με προσοχή, τηρούμε τα χρονοδιαγράμματα και είμαστε σε επικοινωνία σε κάθε στάδιο.",
       contactTitle: "Επικοινωνία",
       contactText: "Τηλ.: 6996832335<br>Email: technohome.gr@gmail.com<br>Διεύθυνση: Αγνώστου Στρατιώτη 23, Θεσσαλονίκη",
       ctaContact: "Καλέστε Τώρα",
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Electrical installations and repairs."
       ],
       aboutTitle: "About Us",
-      aboutText: "TechnoHome carries out complete or partial renovations with focus on quality and reliability. Our experience ensures full client satisfaction.",
+      aboutText: "TechnoHome carries out repair and construction works in Thessaloniki and nearby areas. We take on both individual tasks and turnkey renovations — from rough work to final finishing. We work carefully, meet deadlines, and stay in touch at every stage.",
       contactTitle: "Contact",
       contactText: "Tel.: 6996832335<br>Email: technohome.gr@gmail.com<br>Address: Agnostou Stratioti 23, Thessaloniki",
       ctaContact: "Call Now",
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Монтаж и ремонт электросетей."
       ],
       aboutTitle: "О нас",
-      aboutText: "TechnoHome выполняет полные или частичные ремонты с упором на качество и надежность. Наш опыт гарантирует полное удовлетворение клиентов.",
+      aboutText: "TechnoHome выполняет ремонтные и строительные работы в Салониках и ближайших районах. Берём как отдельные задачи, так и ремонт под ключ — от черновых работ до финишной отделки. Работаем аккуратно, соблюдаем сроки и держим связь на каждом этапе.",
       contactTitle: "Контакты",
       contactText: "Тел.: 6996832335<br>Email: technohome.gr@gmail.com<br>Адрес: Agnostou Stratioti 23, Thessaloniki",
       ctaContact: "Позвонить сейчас",
