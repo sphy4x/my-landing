@@ -1,187 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ancoris - Digital Agency & Design Studio</title>
+    <title>Сайт-переделка</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">Ancoris</div>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Innovative Digital Solutions</h1>
-            <p class="hero-subtitle">We craft beautiful and functional digital experiences</p>
-            <button class="cta-button">Get Started</button>
-        </div>
-        <div class="hero-background"></div>
+    <!-- Header с переключением языков -->
+    <header>
+    <div class="logo">
+        <h1 style="text-align: center;">TECHNOHOME</h1>
+    </div>
+    <div class="lang-switch">
+        <button data-lang="ru">RU</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="gr">GR</button>
+    </div>
+    </header>
+
+
+    <!-- Hero -->
+    <section id="hero">
+        <h1 data-i18n="heroTitle"></h1>
+        <p data-i18n="heroDesc"></p>
+        <button data-i18n="heroButton"></button>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Web Design</h3>
-                    <p>Creative and modern website designs that engage your audience and drive conversions.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
-                    <h3>Development</h3>
-                    <p>Robust and scalable web applications built with the latest technologies and best practices.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Mobile Apps</h3>
-                    <p>Native and cross-platform mobile applications for iOS and Android platforms.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>SEO & Marketing</h3>
-                    <p>Strategic digital marketing and SEO services to boost your online visibility.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Analytics & Consulting</h3>
-                    <p>Data-driven insights and strategic consulting to optimize your digital presence.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🚀</div>
-                    <h3>Growth Strategy</h3>
-                    <p>Comprehensive growth strategies tailored to your business goals and target audience.</p>
-                </div>
-            </div>
-        </div>
+    <!-- Преимущества / УТП -->
+    <section id="advantages">
+        <h2 data-i18n="advantagesTitle"></h2>
+        <ul>
+            <li data-i18n="advantage1"></li>
+            <li data-i18n="advantage2"></li>
+            <li data-i18n="advantage3"></li>
+        </ul>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-                    <h3>Project One</h3>
-                    <p>E-commerce Platform Redesign</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-                    <h3>Project Two</h3>
-                    <p>SaaS Dashboard Development</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                    <h3>Project Three</h3>
-                    <p>Mobile App Launch & Marketing</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-                    <h3>Project Four</h3>
-                    <p>Brand Identity & Web Design</p>
-                </div>
-            </div>
-        </div>
+    <!-- Список услуг -->
+    <section id="services">
+        <h2 data-i18n="servicesTitle"></h2>
+        <ul>
+            <li data-i18n="service1"></li>
+            <li data-i18n="service2"></li>
+            <li data-i18n="service3"></li>
+        </ul>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Ancoris</h2>
-                    <p>We are a forward-thinking digital agency dedicated to creating exceptional digital experiences. With over a decade of expertise, we've helped hundreds of businesses transform their digital presence and achieve remarkable growth.</p>
-                    <p>Our team combines creative design with technical excellence to deliver solutions that exceed expectations.</p>
-                    <ul class="about-list">
-                        <li>✓ 500+ Projects Completed</li>
-                        <li>✓ 100+ Happy Clients</li>
-                        <li>✓ Award-Winning Team</li>
-                        <li>✓ 24/7 Support Available</li>
-                    </ul>
-                </div>
-                <div class="about-image">
-                    <div class="image-placeholder"></div>
-                </div>
-            </div>
-        </div>
+    <!-- Отзывы -->
+    <section id="reviews">
+        <h2 data-i18n="reviewsTitle"></h2>
+        <div id="reviews-list"></div>
+
+        <h3 data-i18n="reviewsFormTitle"></h3>
+        <input type="text" id="reviewer-name" data-i18n-placeholder="reviewName" placeholder="Имя">
+        <textarea id="review-text" data-i18n-placeholder="reviewText" placeholder="Ваш отзыв"></textarea>
+        <button id="submit-review" data-i18n="submitButton"></button>
+        <button id="clear-reviews" data-i18n="clearReviewsButton">Очистить все отзывы</button>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p class="contact-subtitle">Ready to start your next project? Get in touch with us today.</p>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
-        </div>
+    <!-- Как мы работаем -->
+    <section id="process">
+        <h2 data-i18n="processTitle"></h2>
+        <ul>
+            <li data-i18n="step1"></li>
+            <li data-i18n="step2"></li>
+            <li data-i18n="step3"></li>
+        </ul>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact">
+        <h2 data-i18n="contactTitle"></h2>
+        <p data-i18n="contactDesc"></p>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Ancoris</h4>
-                    <p>Leading digital agency for innovative solutions.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: hello@ancoris.eu</p>
-                    <p>Phone: +1 (555) 123-4567</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#">Twitter</a>
-                        <a href="#">LinkedIn</a>
-                        <a href="#">Instagram</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Ancoris. All rights reserved.</p>
-            </div>
-        </div>
+    <footer>
+        <p data-i18n="footerText"></p>
     </footer>
 
     <script src="script.js"></script>
