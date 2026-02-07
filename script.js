@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
 
-  // Функция перевода
   function applyTranslations(lang) {
     document.getElementById('logo').textContent = translations[lang].logo;
     document.getElementById('hero-title').textContent = translations[lang].heroTitle;
