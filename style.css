@@ -5,7 +5,7 @@ body {
   line-height: 1.6;
   color: #333;
 
-  background-image: url("foto.png");
+  background-image: url("");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -22,7 +22,7 @@ header { background: #222; color: #fff; padding: 1rem 0; position: sticky; top: 
 .lang-switcher select { padding: 0.4rem 0.6rem; border-radius: 4px; border: none; background: #333; color: #fff; cursor: pointer; }
 
 /* Hero */
-/*.hero {
+.hero {
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero.jpg') center/cover no-repeat;
   height: 450px;
   display: flex;
@@ -30,29 +30,7 @@ header { background: #222; color: #fff; padding: 1rem 0; position: sticky; top: 
   justify-content: center;
   color: #fff;
   text-align: center;
-} */
-
-.hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
 }
-
-/* Three.js внутри hero */
-#three-hero {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-/* Текст поверх анимации */
-.hero-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: white;
-}
-
 
 .hero-text {
   padding: 2rem;
@@ -128,14 +106,3 @@ footer { background: #222; color: #fff; padding: 1.5rem; text-align: center; mar
 
 /* Responsive */
 @media (max-width: 600px) { .service { flex: 1 1 100%; } .header-container { flex-direction: column; gap: 0.5rem; } }
-
-#three-bg {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-}
-
-canvas {
-    display: block;
-}
