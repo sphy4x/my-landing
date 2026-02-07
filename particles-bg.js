@@ -80,4 +80,10 @@ window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+// RESIZE
+window.addEventListener("resize", () => {
+    const hero = document.querySelector(".hero");
+    camera.aspect = hero.offsetWidth / hero.offsetHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(hero.offsetWidth, hero.offsetHeight);
 });
