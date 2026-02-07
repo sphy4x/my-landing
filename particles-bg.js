@@ -12,9 +12,16 @@ camera.position.z = 5;
 
 // RENDERER
 const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+const hero = document.querySelector(".hero");
+renderer.setSize(hero.offsetWidth, hero.offsetHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-document.getElementById("three-bg").appendChild(renderer.domElement);
+document.getElementById("three-hero").appendChild(renderer.domElement);
+const hero = document.querySelector(".hero");
+camera.aspect = hero.offsetWidth / hero.offsetHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(hero.offsetWidth, hero.offsetHeight);
+
+
 
 // PARTICLES
 const particlesCount = 1500;
