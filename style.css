@@ -106,3 +106,14 @@ footer { background: #222; color: #fff; padding: 1.5rem; text-align: center; mar
 
 /* Responsive */
 @media (max-width: 600px) { .service { flex: 1 1 100%; } .header-container { flex-direction: column; gap: 0.5rem; } }
+
+#three-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+canvas {
+    display: block;
+}
