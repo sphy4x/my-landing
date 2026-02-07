@@ -1,84 +1,172 @@
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+// Мультиязычные тексты
+const translations = {
+    ru: {
+        heroTitle: "Ремонт и отделка под ключ",
+        heroDesc: "Быстро, качественно и с гарантией",
+        heroButton: "Связаться",
 
-// Contact form submission
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const formData = new FormData(this);
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const message = this.querySelector('textarea').value;
-        
-        // Basic validation
-        if (name && email && message) {
-            // Save to localStorage for demo purposes
-            const submission = {
-                name: name,
-                email: email,
-                message: message,
-                timestamp: new Date().toLocaleString()
-            };
-            
-            let submissions = JSON.parse(localStorage.getItem('submissions')) || [];
-            submissions.push(submission);
-            localStorage.setItem('submissions', JSON.stringify(submissions));
-            
-            // Show success message
-            alert('Thank you for your message! We will get back to you soon.');
-            
-            // Reset form
-            this.reset();
-        } else {
-            alert('Please fill in all fields.');
-        }
-    });
-}
+        advantagesTitle: "Наши преимущества",
+        advantage1: "Собственные мастера",
+        advantage2: "Фиксированная смета",
+        advantage3: "Сроки под контролем",
 
-// Mobile menu toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+        servicesTitle: "Услуги",
+        service1: "Капитальный ремонт квартиры",
+        service2: "Косметический ремонт",
+        service3: "Дизайн-проект интерьера",
 
-if (hamburger) {
-    hamburger.addEventListener('click', function() {
-        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-    });
-}
+        reviewsTitle: "Отзывы клиентов",
+        reviewsFormTitle: "Оставить отзыв",
+        submitButton: "Отправить",
+        reviewName: "Имя",
+        reviewText: "Ваш отзыв",
+        clearReviewsButton: "Очистить все отзывы",
 
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+        processTitle: "Как мы работаем",
+        step1: "Консультация и замер",
+        step2: "Заключение договора",
+        step3: "Реализация проекта",
+
+        contactTitle: "Контакты",
+        contactDesc: "Напишите нам: example@mail.com",
+
+        footerText: "Все права защищены © 2026"
+    },
+    en: {
+        heroTitle: "Renovation & Finishing",
+        heroDesc: "Fast, high-quality, guaranteed",
+        heroButton: "Contact Us",
+
+        advantagesTitle: "Our Advantages",
+        advantage1: "Own specialists",
+        advantage2: "Fixed estimate",
+        advantage3: "Deadline control",
+
+        servicesTitle: "Services",
+        service1: "Full apartment renovation",
+        service2: "Cosmetic renovation",
+        service3: "Interior design project",
+
+        reviewsTitle: "Customer Reviews",
+        reviewsFormTitle: "Leave a review",
+        submitButton: "Submit",
+        reviewName: "Name",
+        reviewText: "Your review",
+        clearReviewsButton: "Clear All Reviews",
+
+        processTitle: "How we work",
+        step1: "Consultation and measurement",
+        step2: "Contract signing",
+        step3: "Project execution",
+
+        contactTitle: "Contact",
+        contactDesc: "Write to us: example@mail.com",
+
+        footerText: "All rights reserved © 2026"
+    },
+    gr: {
+        heroTitle: "Ανακαινίσεις & Τελειώματα",
+        heroDesc: "Γρήγορα, ποιοτικά και με εγγύηση",
+        heroButton: "Επικοινωνία",
+
+        advantagesTitle: "Τα Πλεονεκτήματά μας",
+        advantage1: "Ιδιόκτητοι τεχνίτες",
+        advantage2: "Σταθερός προϋπολογισμός",
+        advantage3: "Έλεγχος προθεσμιών",
+
+        servicesTitle: "Υπηρεσίες",
+        service1: "Ολική ανακαίνιση διαμερίσματος",
+        service2: "Απλή ανακαίνιση",
+        service3: "Σχέδιο εσωτερικού χώρου",
+
+        reviewsTitle: "Κριτικές Πελατών",
+        reviewsFormTitle: "Αφήστε ένα σχόλιο",
+        submitButton: "Αποστολή",
+        reviewName: "Όνομα",
+        reviewText: "Το σχόλιό σας",
+        clearReviewsButton: "Διαγραφή όλων των σχολίων",
+
+        processTitle: "Πώς δουλεύουμε",
+        step1: "Συμβουλευτική και μέτρηση",
+        step2: "Υπογραφή σύμβασης",
+        step3: "Εκτέλεση έργου",
+
+        contactTitle: "Επικοινωνία",
+        contactDesc: "Γράψτε μας: example@mail.com",
+
+        footerText: "Όλα τα δικαιώματα διατηρούνται © 2026"
+    }
 };
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
+// Мультиязычная логика
+const elements = document.querySelectorAll("[data-i18n]");
+const buttons = document.querySelectorAll(".lang-switch button");
 
-// Observe service cards and portfolio items
-document.querySelectorAll('.service-card, .portfolio-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+function setLanguage(lang) {
+    elements.forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        el.textContent = translations[lang][key];
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        el.placeholder = translations[lang][key];
+    });
+
+    localStorage.setItem("lang", lang);
+}
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+});
+
+const savedLang = localStorage.getItem("lang") || "ru";
+setLanguage(savedLang);
+
+// Динамические отзывы
+const reviewsList = document.getElementById("reviews-list");
+const submitBtn = document.getElementById("submit-review");
+const clearBtn = document.getElementById("clear-reviews");
+
+let savedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+savedReviews.forEach(r => addReviewToDOM(r.name, r.text));
+
+function addReviewToDOM(name, text) {
+    const div = document.createElement("div");
+    div.classList.add("review");
+    div.innerHTML = `<strong>${name}</strong>: <p>${text}</p>`;
+    reviewsList.prepend(div);
+    div.style.animation = "reviewFadeIn 0.5s ease forwards";
+}
+
+submitBtn.addEventListener("click", () => {
+    const name = document.getElementById("reviewer-name").value.trim();
+    const text = document.getElementById("review-text").value.trim();
+    if(name && text) {
+        addReviewToDOM(name, text);
+        savedReviews.unshift({ name, text });
+        localStorage.setItem("reviews", JSON.stringify(savedReviews));
+        document.getElementById("reviewer-name").value = "";
+        document.getElementById("review-text").value = "";
+    } else {
+        const lang = localStorage.getItem("lang") || "ru";
+        const messages = {
+            ru: "Введите имя и текст отзыва",
+            en: "Enter name and review text",
+            gr: "Εισάγετε όνομα και κείμενο σχολίου"
+        };
+        alert(messages[lang]);
+    }
+});
+
+clearBtn.addEventListener("click", () => {
+    const lang = localStorage.getItem("lang") || "ru";
+    const messages = {
+        ru: "Вы точно хотите удалить все отзывы?",
+        en: "Are you sure you want to delete all reviews?",
+        gr: "Είστε σίγουροι ότι θέλετε να διαγράψετε όλα τα σχόλια;"
+    };
+    if(confirm(messages[lang])) {
+        localStorage.removeItem("reviews");
+        reviewsList.innerHTML = "";
+    }
 });
