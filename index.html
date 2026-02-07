@@ -1,119 +1,62 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="el">
 <head>
-  <meta charset="UTF-8" />
-  <title>TECNOHOME — Ремонт и отделка</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechnoHome – Ανακαινίσεις & Υπηρεσίες</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="header">
-  <div class="container header-inner">
-    <div class="logo">TECNOHOME</div>
-    <nav class="nav">
-      <a href="#portfolio" data-i18n="navPortfolio"></a>
-      <a href="#advantages" data-i18n="navAdvantages"></a>
-      <a href="#process" data-i18n="navProcess"></a>
-      <a href="#reviews" data-i18n="navReviews"></a>
-      <a href="#contact" data-i18n="navContact"></a>
-    </nav>
-    <div class="lang-switch">
-      <button data-lang="ru">RU</button>
-      <button data-lang="en">EN</button>
-      <button data-lang="gr">GR</button>
-    </div>
-  </div>
+<header>
+  <h1>TechnoHome</h1>
+  <nav>
+    <a href="#services">Υπηρεσίες</a>
+    <a href="#about">Σχετικά</a>
+    <a href="#contact">Επικοινωνία</a>
+  </nav>
 </header>
 
-<section id="hero" class="section hero reveal">
-  <div class="container hero-inner">
-    <h1 data-i18n="heroTitle"></h1>
-    <p data-i18n="heroDesc"></p>
-    <a href="#contact" class="btn" data-i18n="heroButton"></a>
-  </div>
+<section class="hero">
+  <h2>Ανακαινίσεις & Υπηρεσίες Υψηλής Ποιότητας</h2>
 </section>
 
-<section id="portfolio" class="section reveal">
-  <div class="container">
-    <h2 data-i18n="portfolioTitle"></h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <div class="ph"></div>
-        <span data-i18n="portfolio1"></span>
-      </div>
-      <div class="portfolio-card">
-        <div class="ph"></div>
-        <span data-i18n="portfolio2"></span>
-      </div>
-      <div class="portfolio-card">
-        <div class="ph"></div>
-        <span data-i18n="portfolio3"></span>
-      </div>
-      <div class="portfolio-card">
-        <div class="ph"></div>
-        <span data-i18n="portfolio4"></span>
-      </div>
-      <div class="portfolio-card">
-        <div class="ph"></div>
-        <span data-i18n="portfolio5"></span>
-      </div>
-      <div class="portfolio-card">
-        <div class="ph"></div>
-        <span data-i18n="portfolio6"></span>
-      </div>
+<section id="services" class="content fade-in">
+  <h2>Οι Υπηρεσίες μας</h2>
+  <div class="services">
+    <div class="service">
+      <h3>Πλακάκια</h3>
+      <p>Τοποθέτηση πλακιδίων μπάνιου, κουζίνας, δαπέδου.</p>
+    </div>
+    <div class="service">
+      <h3>Βάψιμο</h3>
+      <p>Εσωτερικών και εξωτερικών χώρων.</p>
+    </div>
+    <div class="service">
+      <h3>Υδραυλικά</h3>
+      <p>Εγκατάσταση και συντήρηση υδραυλικών συστημάτων.</p>
+    </div>
+    <div class="service">
+      <h3>Ηλεκτρολογικά</h3>
+      <p>Εγκαταστάσεις και επισκευές ηλεκτρικών κυκλωμάτων.</p>
     </div>
   </div>
 </section>
 
-<section id="advantages" class="section section-muted reveal">
-  <div class="container">
-    <h2 data-i18n="advantagesTitle"></h2>
-    <div class="cards">
-      <div class="card" data-i18n="advantage1"></div>
-      <div class="card" data-i18n="advantage2"></div>
-      <div class="card" data-i18n="advantage3"></div>
-    </div>
-  </div>
+<section id="about" class="content fade-in">
+  <h2>Σχετικά με εμάς</h2>
+  <p>Η TechnoHome αναλαμβάνει ολοκληρωμένες ή μερικές ανακαινίσεις, με έμφαση στην ποιότητα και την αξιοπιστία. Η εμπειρία μας σε κάθε έργο εξασφαλίζει πλήρη ικανοποίηση των πελατών.</p>
 </section>
 
-<section id="process" class="section reveal">
-  <div class="container">
-    <h2 data-i18n="processTitle"></h2>
-    <ol class="steps">
-      <li data-i18n="step1"></li>
-      <li data-i18n="step2"></li>
-      <li data-i18n="step3"></li>
-    </ol>
-  </div>
+<section id="contact" class="content fade-in">
+  <h2>Επικοινωνία</h2>
+  <p>Τηλ.: 6996832335</p>
+  <p>Email: technohome.gr@gmail.com</p>
+  <p>Διεύθυνση: Αγνώστου Στρατιώτη 23, Θεσσαλονίκη</p>
 </section>
 
-<section id="reviews" class="section section-muted reveal">
-  <div class="container">
-    <h2 data-i18n="reviewsTitle"></h2>
-    <div id="reviews-list" class="reviews-list"></div>
-
-    <h3 data-i18n="reviewsFormTitle"></h3>
-    <input id="reviewer-name" type="text" data-i18n-placeholder="reviewName" />
-    <textarea id="review-text" data-i18n-placeholder="reviewText"></textarea>
-    <div class="review-actions">
-      <button id="submit-review" class="btn" data-i18n="submitButton"></button>
-      <button id="clear-reviews" class="btn ghost" data-i18n="clearReviewsButton"></button>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="section reveal">
-  <div class="container contact">
-    <h2 data-i18n="contactTitle"></h2>
-    <p data-i18n="contactDesc"></p>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container">
-    <p data-i18n="footerText"></p>
-  </div>
+<footer>
+  <p>© 2026 TechnoHome. Όλα τα δικαιώματα κατοχυρωμένα.</p>
 </footer>
 
 <script src="script.js"></script>
