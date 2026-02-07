@@ -1,9 +1,83 @@
-<!-- Ensure these files exist and paths are correct -->
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechnoHome – Ανακαινίσεις & Υπηρεσίες</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="intro" id="intro"></div>
+
+
+
+<header>
+  <div class="container header-container">
+    <h1 id="logo">TechnoHome</h1>
+
+    <!-- Переключатель языков справа -->
+    <div class="lang-switcher">
+      <select id="language-select">
+        <option value="el" selected>GR</option>
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-text">
+    <h2 id="hero-title">Ανακαινίσεις & Υπηρεσίες Υψηλής Ποιότητας</h2>
+    <a href="#contact" class="cta-btn" id="cta-hero">Ζήτα Προσφορά</a>
+  </div>
+</section>
+
+<section id="services" class="content fade-in">
+  <h2 id="services-title">Οι Υπηρεσίες μας</h2>
+  <div class="services">
+    <div class="service">
+      <img src="images/service1.jpg" alt="Πλακάκια">
+      <h3 id="service1-title">Πλακάκια</h3>
+      <p id="service1-desc">Τοποθέτηση πλακιδίων μπάνιου, κουζίνας, δαπέδου.</p>
+    </div>
+    <div class="service">
+      <img src="images/service2.jpg" alt="Βάψιμο">
+      <h3 id="service2-title">Βάψιμο</h3>
+      <p id="service2-desc">Εσωτερικών και εξωτερικών χώρων.</p>
+    </div>
+    <div class="service">
+      <img src="images/service3.jpg" alt="Υδραυλικά">
+      <h3 id="service3-title">Υδραυλικά</h3>
+      <p id="service3-desc">Εγκατάσταση και συντήρηση υδραυλικών συστημάτων.</p>
+    </div>
+    <div class="service">
+      <img src="images/service4.jpg" alt="Ηλεκτρολογικά">
+      <h3 id="service4-title">Ηλεκτρολογικά</h3>
+      <p id="service4-desc">Εγκαταστάσεις και επισκευές ηλεκτρικών κυκλωμάτων.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="content fade-in">
+  <h2 id="about-title">Σχετικά με εμάς</h2>
+  <p id="about-text">Η TechnoHome αναλαμβάνει ολοκληρωμένες ή μερικές ανακαινίσεις, με έμφαση στην ποιότητα και αξιοπιστία. Η εμπειρία μας σε κάθε έργο εξασφαλίζει πλήρη ικανοποίηση των πελατών.</p>
+</section>
+
+<section id="contact" class="content fade-in">
+  <h2 id="contact-title">Επικοινωνία</h2>
+  <p id="contact-text">Τηλ.: 6996832335<br>Email: technohome.gr@gmail.com<br>Διεύθυνση: Αγνώστου Στρατιώτη 23, Θεσσαλονίκη</p>
+  <a href="tel:+306996832335" class="cta-btn" id="cta-contact">Καλέστε Τώρα</a>
+</section>
+
+<footer>
+  <p id="footer-text">© 2026 TechnoHome. Όλα τα δικαιώματα κατοχυρωμένα.</p>
+</footer>
+
 <script src="three.min.js"></script>
 <script src="vanta.net.min.js"></script>
 <script src="app.js"></script>
 <script src="script.js"></script>
-
-<!-- Also ensure images exist -->
-<img src="images/service1.jpg" alt="...">
+</body>
+</html>
