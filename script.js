@@ -1,4 +1,4 @@
-// Анимация появления элементов при прокрутке
+// Анимация появления при прокрутке
 const faders = document.querySelectorAll('.fade-in');
 const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 const appearOnScroll = new IntersectionObserver((entries) => {
@@ -9,4 +9,4 @@ const appearOnScroll = new IntersectionObserver((entries) => {
   });
 }, appearOptions);
 
-faders.forEach(fader => { appearOnScroll.observe(fader); });
+faders.forEach(fader => appearOnScroll.observe(fader));
