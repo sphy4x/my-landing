@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт-переделка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header с переключением языков -->
+    <header>
+    <div class="logo">
+        <h1>TECNOHOME</h1>
+    </div>
+    <div class="lang-switch">
+        <button data-lang="ru">RU</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="gr">GR</button>
+    </div>
+    </header>
+
+
+    <!-- Hero -->
+    <section id="hero">
+        <h1 data-i18n="heroTitle"></h1>
+        <p data-i18n="heroDesc"></p>
+        <button data-i18n="heroButton"></button>
+    </section>
+
+    <!-- Преимущества / УТП -->
+    <section id="advantages">
+        <h2 data-i18n="advantagesTitle"></h2>
+        <ul>
+            <li data-i18n="advantage1"></li>
+            <li data-i18n="advantage2"></li>
+            <li data-i18n="advantage3"></li>
+        </ul>
+    </section>
+
+    <!-- Список услуг -->
+    <section id="services">
+        <h2 data-i18n="servicesTitle"></h2>
+        <ul>
+            <li data-i18n="service1"></li>
+            <li data-i18n="service2"></li>
+            <li data-i18n="service3"></li>
+        </ul>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="reviews">
+        <h2 data-i18n="reviewsTitle"></h2>
+        <div id="reviews-list"></div>
+
+        <h3 data-i18n="reviewsFormTitle"></h3>
+        <input type="text" id="reviewer-name" data-i18n-placeholder="reviewName" placeholder="Имя">
+        <textarea id="review-text" data-i18n-placeholder="reviewText" placeholder="Ваш отзыв"></textarea>
+        <button id="submit-review" data-i18n="submitButton"></button>
+        <button id="clear-reviews" data-i18n="clearReviewsButton">Очистить все отзывы</button>
+    </section>
+
+    <!-- Как мы работаем -->
+    <section id="process">
+        <h2 data-i18n="processTitle"></h2>
+        <ul>
+            <li data-i18n="step1"></li>
+            <li data-i18n="step2"></li>
+            <li data-i18n="step3"></li>
+        </ul>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact">
+        <h2 data-i18n="contactTitle"></h2>
+        <p data-i18n="contactDesc"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p data-i18n="footerText"></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
