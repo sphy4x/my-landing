@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="el">
-<head>
+<head>ф
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechnoHome – Ανακαινίσεις & Υπηρεσίες</title>
@@ -59,6 +59,14 @@
         }
         .section-padding {
             @apply py-16 sm:py-24;
+        }
+        
+        @keyframes ken-burns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .animate-ken-burns {
+            animation: ken-burns 20s ease-out infinite alternate;
         }
     }
     </style>
