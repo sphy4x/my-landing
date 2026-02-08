@@ -1,109 +1,80 @@
 <!DOCTYPE html>
 <html lang="el">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechnoHome – Ανακαινίσεις & Υπηρεσίες</title>
-  <link rel="stylesheet" href="style.css">
+<head>ф
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoHome – Ανακαινίσεις & Υπηρεσίες</title>
+    <meta name="description" content="Η TechnoHome αναλαμβάνει ολοκληρωμένες ή μερικές ανακαινίσεις, με έμφαση στην ποιότητα και αξιοπιστία.">
+    <meta name="keywords" content="Ανακαινίσεις, Υδραυλικά, Ηλεκτρολογικά, Βάψιμο, Πλακάκια, Θεσσαλονίκη">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="TechnoHome – Ανακαινίσεις & Υπηρεσίες">
+    <meta property="og:description" content="Υπηρεσίες ανακαίνισης υψηλής ποιότητας στη Θεσσαλονίκη.">
+
+    <!-- React & Tailwind -->
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    
+    <!-- Google Fonts for Greek support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            --primary-color: #0f172a; /* Slate 900 */
+            --secondary-color: #334155; /* Slate 700 */
+            --accent-color: #0ea5e9; /* Sky 500 */
+            --accent-hover: #0284c7; /* Sky 600 */
+            --light-bg: #f8fafc;
+        }
+    }
+
+    @layer base {
+        body {
+            font-family: 'Manrope', sans-serif;
+            @apply text-slate-800 bg-white;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-bold tracking-tight text-[var(--primary-color)];
+        }
+    }
+
+    @layer components {
+        .container-custom {
+            @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+        }
+        .btn {
+            @apply inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+        }
+        .btn-primary {
+            @apply bg-[var(--accent-color)] text-white hover:bg-[var(--accent-hover)] focus:ring-[var(--accent-color)];
+        }
+        .btn-outline {
+            @apply border-2 border-white text-white hover:bg-white hover:text-[var(--primary-color)];
+        }
+        .section-padding {
+            @apply py-16 sm:py-24;
+        }
+    }
+    </style>
 </head>
 <body>
- 
-<div id="three-bg"></div>
-
-
-<div class="intro" id="intro"></div>
-
-
-
-<header>
-  <div class="container header-container">
-    <h1 id="logo">TechnoHome</h1>
-
-    <!-- Переключатель языков справа -->
-    <div class="lang-switcher">
-      <select id="language-select">
-        <option value="el" selected>GR</option>
-        <option value="en">EN</option>
-        <option value="ru">RU</option>
-      </select>
-    </div>
-    </div>
-</header>
-
-<section class="hero">
-  <div class="container hero-container">
-    <div class="hero-text">
-      <h2 id="hero-title" style="color: white;">Ανακαινίσεις & Υπηρεσίες Υψηλής Ποιότητας</h2>
-      <a href="#contact" class="cta-btn" id="cta-hero">Ζήτα Προσφορά</a>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="content fade-in">
-  <h2 id="about-title">Σχετικά με εμάς</h2>
-  <p id="about-text">Η TechnoHome αναλαμβάνει ολοκληρωμένες ή μερικές ανακαινίσεις, με έμφαση στην ποιότητα και αξιοπιστία. Η εμπειρία μας σε κάθε έργο εξασφαλίζει πλήρη ικανοποίηση των πελατών.</p>
-</section>
-
-<section id="services" class="content fade-in">
-  <h2 id="services-title">Οί Υπηρεσίες μας</h2>
-  <div class="services">
-    <div class="service">
-      <img src="images/service1.jpg" alt="Πλακάκια">
-      <h3 id="service1-title">Πλακάκια</h3>
-      <p id="service1-desc">Τοποθέτηση πλακιδίων μπάνιου, κουζίνας, δαπέδου.</p>
-    </div>
-    <div class="service">
-      <img src="images/service2.jpg" alt="Βάψιμο">
-      <h3 id="service2-title">Βάψιμο</h3>
-      <p id="service2-desc">Εσωτερικών και εξωτερικών χώρων.</p>
-    </div>
-    <div class="service">
-      <img src="images/service3.jpg" alt="Υδραυλικά">
-      <h3 id="service3-title">Υδραυλικά</h3>
-      <p id="service3-desc">Εγκατάσταση και συντήρηση υδραυλικών συστημάτων.</p>
-    </div>
-    <div class="service">
-      <img src="images/service4.jpg" alt="Ηλεκτρολογικά">
-      <h3 id="service4-title">Ηλεκτρολογικά</h3>
-      <p id="service4-desc">Εγκαταστάσεις και επισκευές ηλεκτρικών κυκλωμάτων.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="content fade-in">
-  <h2 id="contact-title">Επικοινωνία</h2>
-  <p id="contact-text">Τηλ.: 6996832335<br>Email: technohome.gr@gmail.com<br>Διεύθυνση: Αγνώστου Στρατιώτη 23, Θεσσαλονίκη</p>
-  <a href="tel:+306996832335" class="cta-btn" id="cta-contact">Καλέστε Τώρα</a>
-</section>
-
-<footer>
-  <p id="footer-text">© 2026 TechnoHome. Όλα τα δικαιώματα κατοχυρωμένα.</p>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-
-<script>
-  VANTA.NET({
-    el: "#three-bg",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 671.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 0.80,
-    color: 0xffa500,
-    backgroundColor: 0x111111,
-    points: 12.00,
-    maxDistance: 22.00,
-    spacing: 18.00
-  });
-</script>
-
-<script src="app.js"></script>
-<script src="script.js"></script>
-
-
+    <div id="root"></div>
+    
+    <!-- Components -->
+    <script type="text/babel" src="components/Navbar.js"></script>
+    <script type="text/babel" src="components/Hero.js"></script>
+    <script type="text/babel" src="components/About.js"></script>
+    <script type="text/babel" src="components/Services.js"></script>
+    <script type="text/babel" src="components/Contact.js"></script>
+    <script type="text/babel" src="components/Footer.js"></script>
+    
+    <!-- Main App -->
+    <script type="text/babel" src="app.js"></script>
 </body>
 </html>
