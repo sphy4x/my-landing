@@ -6,11 +6,11 @@ function Hero() {
     return (
         <div id="hero" className="relative h-screen min-h-[600px] flex items-center" data-name="hero" data-file="components/Hero.js">
             {/* Background Image with Overlay */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 z-0 overflow-hidden">
                 <img 
                     src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2831&auto=format&fit=crop" 
                     alt="Modern Home Renovation" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover animate-ken-burns"
                 />
                 <div className="absolute inset-0 bg-slate-900/60 mix-blend-multiply"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"></div>

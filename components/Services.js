@@ -1,30 +1,54 @@
 function Services() {
     const services = [
         {
+            id: "tiles",
             title: "Πλακάκια",
             description: "Τοποθέτηση πλακιδίων μπάνιου, κουζίνας και δαπέδου με απόλυτη ακρίβεια και υψηλή αισθητική.",
             icon: "icon-layout-grid",
             image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2670&auto=format&fit=crop"
         },
         {
+            id: "painting",
             title: "Βάψιμο",
             description: "Ελαιοχρωματισμοί εσωτερικών και εξωτερικών χώρων, τεχνοτροπίες και φρεσκαρίσματα.",
             icon: "icon-paint-roller",
             image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2670&auto=format&fit=crop"
         },
         {
+            id: "plumbing",
             title: "Υδραυλικά",
             description: "Εγκατάσταση και συντήρηση υδραυλικών συστημάτων, ανακαίνιση μπάνιου και κουζίνας.",
             icon: "icon-wrench",
             image: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=2670&auto=format&fit=crop"
         },
         {
+            id: "electrical",
             title: "Ηλεκτρολογικά",
             description: "Πλήρεις ηλεκτρολογικές εγκαταστάσεις, επισκευές βλαβών και αναβαθμίσεις πινάκων.",
             icon: "icon-zap",
             image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2669&auto=format&fit=crop"
         }
     ];
+
+    const handleServiceClick = (serviceId) => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Try to pre-select the service in the contact form
+            // We use a small timeout to ensure scrolling starts first
+            setTimeout(() => {
+                const serviceSelect = document.getElementById('service');
+                if (serviceSelect) {
+                    serviceSelect.value = serviceId;
+                    // Add a highlight effect to the select box
+                    serviceSelect.focus();
+                    serviceSelect.classList.add('ring-4', 'ring-sky-200');
+                    setTimeout(() => serviceSelect.classList.remove('ring-4', 'ring-sky-200'), 1000);
+                }
+            }, 500);
+        }
+    };
 
     return (
         <section id="services" className="section-padding bg-slate-50" data-name="services" data-file="components/Services.js">
@@ -39,7 +63,11 @@ function Services() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {services.map((service, index) => (
-                        <div key={index} className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div 
+                            key={index} 
+                            onClick={() => handleServiceClick(service.id)}
+                            className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer relative"
+                        >
                             {/* Image Container */}
                             <div className="h-48 overflow-hidden relative">
                                 <img 
@@ -57,17 +85,21 @@ function Services() {
                             
                             {/* Content */}
                             <div className="p-6">
-                                <h4 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-[var(--accent-color)] transition-colors">
-                                    {service.title}
-                                </h4>
-                                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                                <div className="flex justify-between items-start mb-3">
+                                    <h4 className="text-xl font-bold text-slate-900 group-hover:text-[var(--accent-color)] transition-colors">
+                                        {service.title}
+                                    </h4>
+                                    {/* Arrow icon that appears on hover/active to indicate clickability */}
+                                    <div className="opacity-0 group-hover:opacity-100 transition-opacity text-[var(--accent-color)]">
+                                        <div className="icon-arrow-up-right text-xl"></div>
+                                    </div>
+                                </div>
+                                <p className="text-slate-600 text-sm leading-relaxed">
                                     {service.description}
                                 </p>
-                                <div className="flex items-center text-[var(--accent-color)] font-medium text-sm group-hover:translate-x-1 transition-transform cursor-pointer">
-                                    <span className="mr-1">Μάθετε περισσότερα</span>
-                                    <div className="icon-arrow-right text-xs"></div>
-                                </div>
                             </div>
+                            
+                            {/* Full card ripple or overlay effect on hover can be added here if needed, but the shadow and lift is usually enough */}
                         </div>
                     ))}
                 </div>

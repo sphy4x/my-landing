@@ -1,5 +1,7 @@
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isVisible, setIsVisible] = React.useState(true);
+    const [lastScrollY, setLastScrollY] = React.useState(0);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -11,8 +13,33 @@ function Navbar() {
         }
     };
 
+    React.useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            
+            // Show navbar if at the very top or scrolling up
+            // Hide if scrolling down and not at the top
+            if (currentScrollY < 10) {
+                setIsVisible(true);
+            } else if (currentScrollY > lastScrollY) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+            
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
+
     return (
-        <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200" data-name="navbar" data-file="components/Navbar.js">
+        <nav 
+            className={`fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`} 
+            data-name="navbar" 
+            data-file="components/Navbar.js"
+        >
             <div className="container-custom">
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
@@ -46,8 +73,8 @@ function Navbar() {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden bg-white border-b border-slate-200 absolute w-full">
-                    <div className="px-4 pt-2 pb-6 space-y-2 shadow-xl">
+                <div className="md:hidden bg-white border-b border-slate-200 absolute w-full shadow-xl">
+                    <div className="px-4 pt-2 pb-6 space-y-2">
                         <button 
                             onClick={() => scrollToSection('about')} 
                             className="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
