@@ -8,7 +8,7 @@ function Footer() {
                     {/* Brand */}
                     <div>
                         <span className="text-2xl font-extrabold text-white mb-6 block">
-                            Techno<span className="text-[var(--accent-color)]">Home</span>
+                            Techno<span className="text-[var(--accent-color)]">Home.gr</span>
                         </span>
                         <p className="text-slate-400 mb-6 leading-relaxed">
                             Υψηλής ποιότητας ανακαινίσεις και τεχνικές υπηρεσίες στη Θεσσαλονίκη. 
