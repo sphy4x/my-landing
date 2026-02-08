@@ -57,6 +57,12 @@ function Navbar() {
                         <button onClick={() => scrollToSection('services')} className="text-slate-600 hover:text-[var(--accent-color)] font-medium transition-colors">
                             Υπηρεσίες
                         </button>
+                        <button onClick={() => scrollToSection('gallery')} className="text-slate-600 hover:text-[var(--accent-color)] font-medium transition-colors">
+                            Έργα
+                        </button>
+                        <button onClick={() => scrollToSection('reviews')} className="text-slate-600 hover:text-[var(--accent-color)] font-medium transition-colors">
+                            Αξιολογήσεις
+                        </button>
                         <button onClick={() => scrollToSection('contact')} className="btn btn-primary shadow-lg shadow-sky-500/20">
                             Επικοινωνία
                         </button>
@@ -86,6 +92,18 @@ function Navbar() {
                             className="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
                         >
                             Υπηρεσίες
+                        </button>
+                        <button 
+                            onClick={() => scrollToSection('gallery')} 
+                            className="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+                        >
+                            Έργα
+                        </button>
+                        <button 
+                            onClick={() => scrollToSection('reviews')} 
+                            className="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+                        >
+                            Αξιολογήσεις
                         </button>
                         <button 
                             onClick={() => scrollToSection('contact')} 

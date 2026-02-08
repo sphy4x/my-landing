@@ -44,6 +44,8 @@ function App() {
           <Hero />
           <About />
           <Services />
+          <Gallery />
+          <Reviews />
           <Contact />
         </main>
         <Footer />
