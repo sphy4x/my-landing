@@ -15,17 +15,23 @@ window.loadComments = async function() {
     return [];
   }
 
-  const { data, error } = await supabaseClient
-    .from("comments")
-    .select("*")
-    .order("created_at", { ascending: false });
+  try {
+    const { data, error } = await supabaseClient
+      .from("comments")
+      .select("id, author, text, created_at")
+      .order("created_at", { ascending: false });
 
-  if (error) {
-    console.error(error);
+    if (error) {
+      console.error("Error loading comments:", error);
+      return [];
+    }
+
+    console.log("Comments loaded:", data);
+    return data || [];
+  } catch (err) {
+    console.error("Exception in loadComments:", err);
     return [];
   }
-
-  return data;
 };
 
 window.sendComment = async function(author, text) {
@@ -33,13 +39,24 @@ window.sendComment = async function(author, text) {
     throw new Error("Supabase not configured");
   }
 
-  const { data, error } = await supabaseClient
-    .from("comments")
-    .insert([{ author, text }]);
+  try {
+    const { data, error } = await supabaseClient
+      .from("comments")
+      .insert([{ 
+        author, 
+        text
+      }])
+      .select();
 
-  if (error) {
-    throw error;
+    if (error) {
+      console.error('Supabase insert error:', error);
+      throw new Error(error.message || 'Failed to save comment');
+    }
+
+    console.log("Comment saved:", data);
+    return data;
+  } catch (err) {
+    console.error('Error in sendComment:', err);
+    throw err;
   }
-
-  return data;
 };
