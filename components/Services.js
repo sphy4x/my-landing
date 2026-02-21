@@ -5,14 +5,14 @@ function Services() {
             title: "Πλακάκια",
             description: "Τοποθέτηση πλακιδίων μπάνιου, κουζίνας και δαπέδου με απόλυτη ακρίβεια και υψηλή αισθητική.",
             icon: "icon-layout-grid",
-            image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2670&auto=format&fit=crop"
+            image: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/ec2e658d-da9b-4bab-8dc5-27323809a336.jpeg"
         },
         {
             id: "painting",
             title: "Βάψιμο",
             description: "Ελαιοχρωματισμοί εσωτερικών και εξωτερικών χώρων, τεχνοτροπίες και φρεσκαρίσματα.",
             icon: "icon-paint-roller",
-            image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2670&auto=format&fit=crop"
+            image: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/bf917846-3e1c-4a4f-9a77-1ee080c5a8fe.jpeg"
         },
         {
             id: "plumbing",
@@ -22,11 +22,11 @@ function Services() {
             image: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=2670&auto=format&fit=crop"
         },
         {
-            id: "electrical",
-            title: "Ηλεκτρολογικά",
-            description: "Πλήρεις ηλεκτρολογικές εγκαταστάσεις, επισκευές βλαβών και αναβαθμίσεις πινάκων.",
-            icon: "icon-zap",
-            image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2669&auto=format&fit=crop"
+            id: "demolition",
+            title: "Αποξηλώσεις & Γκρεμίσματα",
+            description: "Αποξηλώσεις και γκρεμίσματα χώρων με ασφάλεια και συνέπεια. Καθαρίζουμε και προετοιμάζουμε τον χώρο για την ανακαίνιση.",
+            icon: "icon-hammer",
+            image: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/0f98445a-4156-430d-8f93-0ab586e94c8c.jpeg"
         }
     ];
 

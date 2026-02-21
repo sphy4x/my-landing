@@ -13,8 +13,16 @@ function Reviews() {
         try {
             const result = await trickleListObjects('review', 50, true);
             if (result && result.items) {
-                // Parse the date for sorting if needed, but the API sorts by objectId (time) roughly
-                setReviews(result.items);
+                // Filter out spam/test reviews
+                const filteredReviews = result.items.filter(item => {
+                    const { name, comment } = item.objectData;
+                    // Filter out specific test entries
+                    if (name === 'cww2cdww' || comment === 'cww2cdww' || name === 'cdw' || comment === 'cdw') {
+                        return false;
+                    }
+                    return true;
+                });
+                setReviews(filteredReviews);
             }
         } catch (error) {
             console.error('Failed to fetch reviews:', error);

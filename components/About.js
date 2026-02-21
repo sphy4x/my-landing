@@ -10,9 +10,9 @@ function About() {
                         
                         <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                             <img 
-                                src="https://images.unsplash.com/photo-1581094794329-cd119277f838?q=80&w=2668&auto=format&fit=crop" 
-                                alt="Renovation Professional" 
-                                className="w-full h-auto object-cover"
+                                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop" 
+                                alt="Modern Renovation Result" 
+                                className="w-full h-[500px] object-cover"
                             />
                         </div>
                         
@@ -37,7 +37,7 @@ function About() {
                         
                         <div className="space-y-6 text-lg text-slate-600">
                             <p>
-                                Η <span className="font-bold text-slate-900">TechnoHome</span> ειδικεύεται στις ανακαινίσεις και τις τεχνικές εργασίες, 
+                                Η <span className="font-bold text-slate-900">TechnoHome.gr</span> ειδικεύεται στις ανακαινίσεις και τις τεχνικές εργασίες, 
                                 προσφέροντας λύσεις που συνδυάζουν αισθητική και λειτουργικότητα.
                             </p>
                             <p>

@@ -44,9 +44,11 @@ function Navbar() {
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
                     <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => scrollToSection('hero')}>
-                        <span className="text-2xl font-extrabold text-[var(--primary-color)]">
-                            Techno<span className="text-[var(--accent-color)]">Home</span>
-                        </span>
+                        <img 
+                            
+                            
+                           
+                         src="https://app.trickle.so/storage/public/images/usr_1b48c29310000001/c1d5e58f-903e-470b-bea9-673db71c30d0.123" alt="TechnoHome.gr" className="h-10 w-auto object-contain"/>
                     </div>
 
                     {/* Desktop Menu */}

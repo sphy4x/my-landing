@@ -1,6 +1,6 @@
-# TechnoHome Website Project
+# TechnoHome.gr Website Project
 
-This is a renovation and home services landing page for TechnoHome, based in Thessaloniki.
+This is a renovation and home services landing page for TechnoHome.gr, based in Thessaloniki.
 
 ## Project Structure
 
@@ -11,7 +11,7 @@ This is a renovation and home services landing page for TechnoHome, based in The
   - `review`: Stores customer reviews (name, rating, comment, date).
 - **Components**:
   - `Navbar`: Responsive navigation (now hides on scroll down).
-  - `Hero`: Main banner with animated background.
+  - `Hero`: Main banner with **Custom Canvas Animation** (Blueprint/Construction theme).
   - `About`: Company information.
   - `Services`: Clickable cards grid of services.
   - `Gallery`: Grid of project images from Unsplash.
