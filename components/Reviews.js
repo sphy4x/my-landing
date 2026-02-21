@@ -4,26 +4,22 @@ function Reviews() {
     const [showForm, setShowForm] = React.useState(false);
     const [formData, setFormData] = React.useState({
         name: '',
-        rating: 5,
         comment: ''
     });
     const [submitting, setSubmitting] = React.useState(false);
 
     const fetchReviews = async () => {
         try {
-            const result = await trickleListObjects('review', 50, true);
-            if (result && result.items) {
-                // Filter out spam/test reviews
-                const filteredReviews = result.items.filter(item => {
-                    const { name, comment } = item.objectData;
-                    // Filter out specific test entries
-                    if (name === 'cww2cdww' || comment === 'cww2cdww' || name === 'cdw' || comment === 'cdw') {
-                        return false;
-                    }
-                    return true;
-                });
-                setReviews(filteredReviews);
-            }
+            const data = await window.loadComments();
+            setReviews(data.map(item => ({
+                objectId: item.id,
+                objectData: {
+                    name: item.author,
+                    rating: 5, // Supabase не имеет rating, добавим по умолчанию
+                    comment: item.text,
+                    date: item.created_at
+                }
+            })));
         } catch (error) {
             console.error('Failed to fetch reviews:', error);
         } finally {
@@ -43,26 +39,14 @@ function Reviews() {
         }));
     };
 
-    const handleRatingChange = (rating) => {
-        setFormData(prev => ({
-            ...prev,
-            rating: rating
-        }));
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSubmitting(true);
         try {
-            await trickleCreateObject('review', {
-                name: formData.name,
-                rating: parseInt(formData.rating),
-                comment: formData.comment,
-                date: new Date().toISOString()
-            });
+            await window.sendComment(formData.name, formData.comment);
             
             // Reset form and reload reviews
-            setFormData({ name: '', rating: 5, comment: '' });
+            setFormData({ name: '', comment: '' });
             setShowForm(false);
             await fetchReviews();
             alert('Η κριτική σας καταχωρήθηκε επιτυχώς!');
@@ -108,34 +92,17 @@ function Reviews() {
                     <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-slate-100 mb-12 animate-fade-in">
                         <h4 className="text-xl font-bold mb-6 text-slate-900">Νέα Αξιολόγηση</h4>
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-2">Όνομα</label>
-                                    <input 
-                                        type="text" 
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent outline-none"
-                                        placeholder="Το όνομά σας"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-2">Βαθμολογία</label>
-                                    <div className="flex gap-2">
-                                        {[1, 2, 3, 4, 5].map((star) => (
-                                            <button
-                                                key={star}
-                                                type="button"
-                                                onClick={() => handleRatingChange(star)}
-                                                className="focus:outline-none transition-transform hover:scale-110"
-                                            >
-                                                <div className={`w-8 h-8 ${star <= formData.rating ? 'icon-star text-yellow-400 fill-yellow-400' : 'icon-star text-slate-300'}`}></div>
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-2">Όνομα</label>
+                                <input 
+                                    type="text" 
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent outline-none"
+                                    placeholder="Το όνομά σας"
+                                />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-2">Σχόλιο</label>
@@ -173,9 +140,6 @@ function Reviews() {
                             reviews.map((item) => (
                                 <div key={item.objectId} className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col h-full hover:shadow-md transition-shadow">
                                     <div className="flex justify-between items-start mb-4">
-                                        <div className="flex items-center space-x-1">
-                                            {renderStars(item.objectData.rating)}
-                                        </div>
                                         <span className="text-xs text-slate-400">
                                             {new Date(item.objectData.date).toLocaleDateString('el-GR')}
                                         </span>
