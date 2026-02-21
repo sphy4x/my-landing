@@ -1,7 +1,8 @@
-const supabaseUrl = "https://pqraoevxcsltsjclqjuw.supabase.co";
-const supabaseKey = "sb_publishable_y162yugl4DJLSgMrrFtQ8Q_Xw8gI3Cf";
+const supabaseUrl = "ВСТАВЬ_URL";
+const supabaseKey = "ВСТАВЬ_PUBLISHABLE_KEY";
 
-const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+// ВАЖНО: window.supabase
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 async function loadComments() {
   const { data, error } = await supabaseClient
