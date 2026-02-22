@@ -81,7 +81,7 @@ function Reviews() {
     };
 
     const renderStars = (rating) => {
-        return [...Array(5)].map((_, i) => (
+        return [...Array(5)].map((eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxcmFvZXZ4Y3NsdHNqY2xxanV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE1ODg5NDIsImV4cCI6MjA4NzE2NDk0Mn0.rgk9DO0ysmq8hRxW9OmmSsKMPsMVASvoapGEG1aQzb8, i) => (
             <div 
                 key={i} 
                 className={`w-4 h-4 ${i < rating ? 'icon-star text-yellow-400 fill-yellow-400' : 'icon-star text-slate-300'}`}
