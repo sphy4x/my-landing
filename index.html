@@ -37,78 +37,28 @@
     @layer base {
         body {
             font-family: 'Manrope', sans-serif;
-            color: #1e293b;
-            background-color: white;
+            @apply text-slate-800 bg-white;
         }
         h1, h2, h3, h4, h5, h6 {
-            font-weight: bold;
-            letter-spacing: -0.025em;
-            color: var(--primary-color);
+            @apply font-bold tracking-tight text-[var(--primary-color)];
         }
     }
 
     @layer components {
         .container-custom {
-            max-width: 80rem;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
         }
-        @media (min-width: 640px) {
-            .container-custom {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
-        @media (min-width: 1024px) {
-            .container-custom {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-        }
-    }
-
-    @layer components {
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.375rem;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
-            outline: none;
-            border: none;
-        }
-        .btn:focus {
-            box-shadow: 0 0 0 2px var(--accent-color);
+            @apply inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
         }
         .btn-primary {
-            background-color: var(--accent-color);
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
+            @apply bg-[var(--accent-color)] text-white hover:bg-[var(--accent-hover)] focus:ring-[var(--accent-color)];
         }
         .btn-outline {
-            border: 2px solid white;
-            color: white;
-        }
-        .btn-outline:hover {
-            background-color: white;
-            color: var(--primary-color);
+            @apply border-2 border-white text-white hover:bg-white hover:text-[var(--primary-color)];
         }
         .section-padding {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-        }
-        @media (min-width: 640px) {
-            .section-padding {
-                padding-top: 6rem;
-                padding-bottom: 6rem;
-            }
+            @apply py-16 sm:py-24;
         }
         
         @keyframes ken-burns {
@@ -136,9 +86,5 @@
     
     <!-- Main App -->
     <script type="text/babel" src="app.js"></script>
- 
-    <!-- supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
 </body>
 </html>
