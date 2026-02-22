@@ -65,7 +65,7 @@ function Reviews() {
                 throw new Error('Supabase не инициализирована');
             }
             
-            await window.sendComment(formData.name, formData.comment, formData.rating);
+            await window.sendComment(formData.name, formData.comment);
             
             // Reset form and reload reviews
             setFormData({ name: '', rating: 5, comment: '' });

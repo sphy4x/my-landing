@@ -1,5 +1,5 @@
 const supabaseUrl = "https://pqraoevxcsltsjclqjuw.supabase.co";
-const supabaseKey = "sb_publishable_y162yugl4DJLSgMrrFtQ8Q_Xw8gI3Cf";
+const supabaseKey = "ВАШ_ПРАВИЛЬНЫЙ_ANON_KEY_ЗДЕСЬ";
 
 // Wait for supabase library to load
 let supabaseClient = null;
@@ -50,7 +50,7 @@ window.loadComments = async function() {
   try {
     const { data, error } = await client
       .from("comments")
-      .select("id, author, text, rating, created_at")
+      .select("id, author, text, created_at")
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -66,7 +66,7 @@ window.loadComments = async function() {
   }
 };
 
-window.sendComment = async function(author, text, rating = 5) {
+window.sendComment = async function(author, text) {
   const client = await initSupabase();
   if (!client) {
     throw new Error("Supabase not configured");
@@ -77,8 +77,7 @@ window.sendComment = async function(author, text, rating = 5) {
       .from("comments")
       .insert([{ 
         author, 
-        text,
-        rating: rating || 5
+        text
       }])
       .select();
 
