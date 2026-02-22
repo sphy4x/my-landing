@@ -11,18 +11,25 @@ function Reviews() {
 
     const fetchReviews = async () => {
         try {
-            const result = await trickleListObjects('review', 50, true);
-            if (result && result.items) {
-                // Filter out spam/test reviews
-                const filteredReviews = result.items.filter(item => {
-                    const { name, comment } = item.objectData;
-                    // Filter out specific test entries
-                    if (name === 'cww2cdww' || comment === 'cww2cdww' || name === 'cdw' || comment === 'cdw') {
-                        return false;
+            if (!window.sendComment) {
+                console.log("Supabase not initialized yet");
+                setLoading(false);
+                return;
+            }
+            
+            const result = await window.loadComments();
+            if (result && Array.isArray(result)) {
+                // Format data to match expected structure
+                const formattedReviews = result.map(item => ({
+                    objectId: item.id,
+                    objectData: {
+                        name: item.author,
+                        comment: item.text,
+                        rating: item.rating || 5,
+                        date: item.created_at
                     }
-                    return true;
-                });
-                setReviews(filteredReviews);
+                }));
+                setReviews(formattedReviews);
             }
         } catch (error) {
             console.error('Failed to fetch reviews:', error);
@@ -54,12 +61,11 @@ function Reviews() {
         e.preventDefault();
         setSubmitting(true);
         try {
-            await trickleCreateObject('review', {
-                name: formData.name,
-                rating: parseInt(formData.rating),
-                comment: formData.comment,
-                date: new Date().toISOString()
-            });
+            if (!window.sendComment) {
+                throw new Error('Supabase не инициализирована');
+            }
+            
+            await window.sendComment(formData.name, formData.comment, formData.rating);
             
             // Reset form and reload reviews
             setFormData({ name: '', rating: 5, comment: '' });

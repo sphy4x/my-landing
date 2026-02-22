@@ -1,24 +1,56 @@
 const supabaseUrl = "https://pqraoevxcsltsjclqjuw.supabase.co";
-const supabaseKey = "sb_publishable_y162yugl4DJLSgMrrFtQ8Q_Xw8gI3Cf";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxcmFvZXZ4Y3NsdHNqY2xxanV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAwMzU5OTksImV4cCI6MTkxNDc4NzU5OX0.test";
 
-// ВАЖНО: window.supabase
+// Wait for supabase library to load
 let supabaseClient = null;
+let initPromise = null;
 
-if (supabaseUrl !== "ВСТАВЬ_URL" && supabaseKey !== "ВСТАВЬ_PUBLISHABLE_KEY") {
-  supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+const initSupabase = async () => {
+  if (supabaseClient) return supabaseClient;
+  
+  // Wait for window.supabase to be available
+  let attempts = 0;
+  while (!window.supabase && attempts < 50) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    attempts++;
+  }
+  
+  if (!window.supabase) {
+    console.error('Supabase library failed to load');
+    return null;
+  }
+  
+  try {
+    if (supabaseUrl && supabaseKey && supabaseUrl !== "ВСТАВЬ_URL") {
+      supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+      console.log('Supabase initialized successfully');
+    }
+  } catch (err) {
+    console.error('Error initializing Supabase:', err);
+  }
+  
+  return supabaseClient;
+};
+
+// Initialize on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSupabase);
+} else {
+  initSupabase();
 }
 
 // Функции для работы с комментариями
 window.loadComments = async function() {
-  if (!supabaseClient) {
+  const client = await initSupabase();
+  if (!client) {
     console.log("Supabase not configured");
     return [];
   }
 
   try {
-    const { data, error } = await supabaseClient
+    const { data, error } = await client
       .from("comments")
-      .select("id, author, text, created_at")
+      .select("id, author, text, rating, created_at")
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -34,17 +66,19 @@ window.loadComments = async function() {
   }
 };
 
-window.sendComment = async function(author, text) {
-  if (!supabaseClient) {
+window.sendComment = async function(author, text, rating = 5) {
+  const client = await initSupabase();
+  if (!client) {
     throw new Error("Supabase not configured");
   }
 
   try {
-    const { data, error } = await supabaseClient
+    const { data, error } = await client
       .from("comments")
       .insert([{ 
         author, 
-        text
+        text,
+        rating: rating || 5
       }])
       .select();
 
