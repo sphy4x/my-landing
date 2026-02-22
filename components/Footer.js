@@ -44,7 +44,7 @@ function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start">
                                 <div className="icon-map-pin mt-1 mr-3 text-[var(--accent-color)]"></div>
-                                <span>Γερμανού Καραβαγγέλη 82,<br/>Θεσσαλονίκη</span>
+                                <span>Θεσσαλονίκη</span>
                             </li>
                             <li className="flex items-start">
                                 <div className="icon-phone mt-1 mr-3 text-[var(--accent-color)]"></div>

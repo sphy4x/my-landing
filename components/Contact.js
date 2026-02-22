@@ -56,7 +56,6 @@ function Contact() {
                                 <h4 className="text-lg font-bold text-slate-900 mb-2">Διεύθυνση</h4>
                                 <p className="text-slate-600 text-sm mb-4">Επισκεφθείτε μας</p>
                                 <p className="text-slate-800 font-medium">
-                                    Γερμανού Καραβαγγέλη 82<br/>
                                     Θεσσαλονίκη, Ελλάδα
                                 </p>
                             </div>

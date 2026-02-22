@@ -5,11 +5,11 @@ function Gallery() {
     const images = [
         {
             url: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/59bfef91-0fb8-44ce-bc4e-2c55f6b2cebb.jpeg",
-            title: "Ανακαίνιση Κουζίνας"
+            title: "Σαλόνι & Δάπεδο"
         },
         {
-            url: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/b8122eb2-3c43-4e02-aa58-2477df6ecb86.jpeg",
-            title: "Πολυτελές Μπάνιο"
+            url: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/a5e5b453-44bb-498d-a974-0efcd703eec4.jpeg",
+            title: "Ανακαίνιση Κουζίνας"
         },
         {
             url: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/a118368f-17ee-405d-bcb9-ea9e65a32abd.jpeg",
@@ -92,9 +92,6 @@ function Gallery() {
                             alt={selectedImage.title} 
                             className="w-auto h-auto max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain"
                         />
-                        <h4 className="text-white text-xl font-bold mt-4 tracking-wide">
-                            {selectedImage.title}
-                        </h4>
                     </div>
                 </div>
             )}
