@@ -1,5 +1,5 @@
 const supabaseUrl = "https://pqraoevxcsltsjclqjuw.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxcmFvZXZ4Y3NsdHNqY2xxanV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE1ODg5NDIsImV4cCI6MjA4NzE2NDk0Mn0.rgk9DO0ysmq8hRxW9OmmSsKMPsMVASvoapGEG1aQzb8";
+const supabaseKey = "sb_publishable_y162yugl4DJLSgMrrFtQ8Q_Xw8gI3Cf";
 
 // Wait for supabase library to load
 let supabaseClient = null;
