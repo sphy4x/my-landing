@@ -1,25 +1,30 @@
-# TechnoHome Website Project
+# TechnoHome Website
 
-This is a renovation and home services landing page for TechnoHome, based in Thessaloniki.
+Single-page renovation and home-services website for TechnoHome.gr in Thessaloniki.
 
-## Project Structure
+## Stack
 
-- **Core**: React 18 (CDN), TailwindCSS (CDN)
-- **Language**: Content in Greek (EL), Development in English/Russian communication.
-- **Assets**: Managed in `thessaloniki`
-- **Database**:
-  - `review`: Stores customer reviews (name, rating, comment, date).
-- **Components**:
-  - `Navbar`: Responsive navigation (now hides on scroll down).
-  - `Hero`: Main banner with animated background.
-  - `About`: Company information.
-  - `Services`: Clickable cards grid of services.
-  - `Gallery`: Grid of project images from Unsplash.
-  - `Reviews`: Live reviews system with submission form connected to Trickle DB.
-  - `Contact`: Form and contact details.
-  - `Footer`: Links and copyright.
+- React 18 loaded from CDN
+- JSX compiled in the browser with Babel Standalone
+- Custom responsive CSS in `styles.css`
+- Lucide icon font
+- Supabase comments/reviews integration
+- GitHub Pages custom domain via `CNAME`
+
+## Page sections
+
+- `Navbar`: fixed responsive navigation
+- `Hero`: company message, calls to action, and key service facts
+- `About`: company information and quality values
+- `Services`: tiles, painting, plumbing, and demolition
+- `Process`: four-step project overview
+- `Gallery`: three existing project images with an accessible lightbox
+- `Reviews`: Supabase-backed reviews and submission form
+- `Contact`: technician, phone numbers, email, and service area
+- `Footer`: navigation, services, and contact details
 
 ## Maintenance
 
-- Update `trickle/assets` when changing images.
-- Keep the `README.md` updated with major structural changes.
+- Keep business phone numbers, email, service copy, and image URLs consistent across components.
+- Update `trickle/assets` when image sources change.
+- Test both desktop and mobile layouts before merging changes to `main`.

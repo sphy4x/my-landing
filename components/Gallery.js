@@ -1,97 +1,95 @@
 function Gallery() {
     const [selectedImage, setSelectedImage] = React.useState(null);
 
-    // Reduced to 3 images as requested
     const images = [
         {
-            url: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/59bfef91-0fb8-44ce-bc4e-2c55f6b2cebb.jpeg",
-            title: "Σαλόνι & Δάπεδο"
+            url: 'https://app.trickle.so/storage/public/images/usr_1b48c29310000001/59bfef91-0fb8-44ce-bc4e-2c55f6b2cebb.jpeg',
+            title: 'Σαλόνι & Δάπεδο'
         },
         {
-            url: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/a5e5b453-44bb-498d-a974-0efcd703eec4.jpeg",
-            title: "Ανακαίνιση Κουζίνας"
+            url: 'https://app.trickle.so/storage/public/images/usr_1b48c29310000001/a5e5b453-44bb-498d-a974-0efcd703eec4.jpeg',
+            title: 'Ανακαίνιση Κουζίνας'
         },
         {
-            url: "https://app.trickle.so/storage/public/images/usr_1b48c29310000001/a118368f-17ee-405d-bcb9-ea9e65a32abd.jpeg",
-            title: "Σαλόνι & Δάπεδο"
+            url: 'https://app.trickle.so/storage/public/images/usr_1b48c29310000001/a118368f-17ee-405d-bcb9-ea9e65a32abd.jpeg',
+            title: 'Σαλόνι & Δάπεδο'
         }
     ];
 
-    const openLightbox = (img) => {
-        setSelectedImage(img);
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    const openLightbox = (image) => {
+        setSelectedImage(image);
+        document.body.style.overflow = 'hidden';
     };
 
     const closeLightbox = () => {
         setSelectedImage(null);
-        document.body.style.overflow = 'auto'; // Restore scrolling
+        document.body.style.overflow = '';
     };
 
+    React.useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') closeLightbox();
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = '';
+        };
+    }, []);
+
     return (
-        <section id="gallery" className="section-padding bg-white" data-name="gallery" data-file="components/Gallery.js">
-            <div className="container-custom">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-sm font-bold text-[var(--accent-color)] tracking-wider uppercase mb-2">ΤΑ ΕΡΓΑ ΜΑΣ</h2>
-                    <h3 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Δείγματα Δουλειάς</h3>
-                    <p className="text-lg text-slate-600">
+        <section id="gallery" className="section gallery-section" data-name="gallery" data-file="components/Gallery.js">
+            <div className="container">
+                <div className="section-head" data-reveal>
+                    <div>
+                        <p className="section-label">Τα Έργα μας</p>
+                        <h2 className="section-title">Δείγματα <span>δουλειάς.</span></h2>
+                    </div>
+                    <p className="section-intro">
                         Φωτογραφίες από πρόσφατες ανακαινίσεις και τεχνικές εργασίες που έχουμε ολοκληρώσει.
                     </p>
                 </div>
 
-                {/* Grid reduced to 3 items */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    {images.map((img, index) => (
-                        <div 
-                            key={index} 
-                            onClick={() => openLightbox(img)}
-                            className="group relative overflow-hidden rounded-xl aspect-[4/3] cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300"
+                <div className="gallery-grid">
+                    {images.map((image, index) => (
+                        <button
+                            className={`gallery-item gallery-item-${index + 1}`}
+                            key={`${image.title}-${index}`}
+                            onClick={() => openLightbox(image)}
+                            aria-label={`Προβολή έργου: ${image.title}`}
+                            data-reveal
                         >
-                            <img 
-                                src={img.url} 
-                                alt={img.title} 
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/20 transition-colors duration-300"></div>
-                        </div>
+                            <img src={image.url} alt={image.title} loading="lazy" />
+                            <span className="gallery-shade" aria-hidden="true"></span>
+                            <span className="gallery-caption">
+                                <small>Έργο {String(index + 1).padStart(2, '0')}</small>
+                                <strong>{image.title}</strong>
+                            </span>
+                            <i className="icon-maximize-2" aria-hidden="true"></i>
+                        </button>
                     ))}
                 </div>
 
-                {/* Facebook Button */}
-                <div className="text-center">
-                    <a 
-                        href="https://www.facebook.com/profile.php?id=100063673203867" 
-                        target="_blank" 
+                <div className="gallery-action" data-reveal>
+                    <a
+                        className="button button-primary"
+                        href="https://www.facebook.com/profile.php?id=100063673203867"
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-primary shadow-lg shadow-sky-500/20 group inline-flex items-center gap-2"
                     >
-                        <span>Δείτε περισσότερα στο Facebook</span>
-                        <div className="icon-facebook text-xl group-hover:scale-110 transition-transform"></div>
+                        Περισσότερα στο Facebook <span className="icon-facebook" aria-hidden="true"></span>
                     </a>
                 </div>
             </div>
 
-            {/* Lightbox Modal */}
             {selectedImage && (
-                <div 
-                    className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-                    onClick={closeLightbox}
-                >
-                    <button 
-                        onClick={closeLightbox}
-                        className="absolute top-4 right-4 text-white hover:text-[var(--accent-color)] transition-colors p-2"
-                    >
-                        <div className="icon-x text-4xl"></div>
+                <div className="lightbox" role="dialog" aria-modal="true" aria-label={selectedImage.title} onClick={closeLightbox}>
+                    <button className="lightbox-close" onClick={closeLightbox} aria-label="Κλείσιμο">
+                        <span className="icon-x" aria-hidden="true"></span>
                     </button>
-                    
-                    <div 
-                        className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
-                        onClick={e => e.stopPropagation()} // Prevent closing when clicking content
-                    >
-                        <img 
-                            src={selectedImage.url} 
-                            alt={selectedImage.title} 
-                            className="w-auto h-auto max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain"
-                        />
+                    <div className="lightbox-content" onClick={(event) => event.stopPropagation()}>
+                        <img src={selectedImage.url} alt={selectedImage.title} />
+                        <p>{selectedImage.title}</p>
                     </div>
                 </div>
             )}
