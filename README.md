@@ -54,6 +54,13 @@ Expected `public.comments` columns:
 
 Anonymous visitors may insert reviews with `is_approved = false`. Only approved reviews may be selected publicly. Never expose a Supabase secret or service-role key in this repository.
 
+Run `supabase/setup-comments.sql` once in the TechnoHome project's SQL Editor. The script enables RLS and grants anonymous visitors only these capabilities:
+
+- read rows where `is_approved = true`
+- insert `author`, `text`, and `rating`
+
+The browser cannot set `is_approved`, update reviews, or delete reviews. Moderation is performed in Supabase Dashboard by changing `is_approved` to `true`.
+
 ## Deployment
 
 Pull requests run the production build. Merges to `main` deploy the generated `dist` directory with `.github/workflows/deploy-pages.yml`.
