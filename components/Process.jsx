@@ -1,4 +1,6 @@
-function Process() {
+import React from 'react';
+
+export default function Process() {
     const steps = [
         {
             number: '01',

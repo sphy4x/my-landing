@@ -1,46 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="el">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#111111">
-    <title>TechnoHome.gr – Ανακαινίσεις & Τεχνικές Υπηρεσίες</title>
-    <meta name="description" content="Η TechnoHome.gr αναλαμβάνει ολοκληρωμένες ή μερικές ανακαινίσεις και τεχνικές εργασίες στη Θεσσαλονίκη, με έμφαση στην ποιότητα και αξιοπιστία.">
-    <meta name="keywords" content="Ανακαινίσεις, Υδραυλικά, Ελαιοχρωματισμοί, Πλακάκια, Αποξηλώσεις, Θεσσαλονίκη">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111111" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <title>Ανακαινίσεις Θεσσαλονίκη | TechnoHome.gr</title>
+    <meta name="description" content="Ανακαινίσεις, πλακάκια, ελαιοχρωματισμοί, υδραυλικά και αποξηλώσεις στη Θεσσαλονίκη. 15+ χρόνια εμπειρίας και 1000+ ολοκληρωμένα έργα." />
+    <link rel="canonical" href="https://techno-home.gr/" />
 
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="el_GR">
-    <meta property="og:url" content="https://techno-home.gr/">
-    <meta property="og:title" content="TechnoHome.gr – Ανακαινίσεις & Τεχνικές Υπηρεσίες">
-    <meta property="og:description" content="Υπηρεσίες ανακαίνισης υψηλής ποιότητας στη Θεσσαλονίκη.">
-    <meta property="og:image" content="https://app.trickle.so/storage/public/images/usr_1b48c29310000001/a5e5b453-44bb-498d-a974-0efcd703eec4.jpeg">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="el_GR" />
+    <meta property="og:url" content="https://techno-home.gr/" />
+    <meta property="og:site_name" content="TechnoHome.gr" />
+    <meta property="og:title" content="Ανακαινίσεις Θεσσαλονίκη | TechnoHome.gr" />
+    <meta property="og:description" content="15+ χρόνια εμπειρίας σε ανακαινίσεις και τεχνικές εργασίες στη Θεσσαλονίκη." />
+    <meta property="og:image" content="https://techno-home.gr/assets/images/og-technohome.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
-    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
-    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
-    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href="/assets/images/hero-demolition.webp" fetchpriority="high" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "TechnoHome.gr",
+        "url": "https://techno-home.gr/",
+        "image": "https://techno-home.gr/assets/images/og-technohome.webp",
+        "email": "technohome.gr@gmail.com",
+        "telephone": ["+306996832335", "+306948308810"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Θεσσαλονίκη",
+          "addressRegion": "Κεντρική Μακεδονία",
+          "addressCountry": "GR"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Θεσσαλονίκη"
+        },
+        "sameAs": ["https://www.facebook.com/profile.php?id=100063673203867"],
+        "knowsAbout": ["Ανακαινίσεις", "Πλακάκια", "Ελαιοχρωματισμοί", "Υδραυλικά", "Αποξηλώσεις"]
+      }
+    </script>
+  </head>
+  <body>
     <a class="skip-link" href="#main-content">Μετάβαση στο κύριο περιεχόμενο</a>
     <div id="root"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase.js"></script>
-
-    <script type="text/babel" src="components/Navbar.js"></script>
-    <script type="text/babel" src="components/Hero.js"></script>
-    <script type="text/babel" src="components/About.js"></script>
-    <script type="text/babel" src="components/Services.js"></script>
-    <script type="text/babel" src="components/Process.js"></script>
-    <script type="text/babel" src="components/Gallery.js"></script>
-    <script type="text/babel" src="components/Reviews.js"></script>
-    <script type="text/babel" src="components/Contact.js"></script>
-    <script type="text/babel" src="components/Footer.js"></script>
-    <script type="text/babel" src="app.js"></script>
-</body>
+    <noscript>Η TechnoHome.gr προσφέρει ανακαινίσεις και τεχνικές υπηρεσίες στη Θεσσαλονίκη. Τηλέφωνο: 699 683 2335.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
