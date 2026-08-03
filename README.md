@@ -1,30 +1,59 @@
-# TechnoHome Website
+# TechnoHome.gr
 
-Single-page renovation and home-services website for TechnoHome.gr in Thessaloniki.
+Production website for TechnoHome.gr, a renovation and technical-services business in Thessaloniki.
 
 ## Stack
 
-- React 18 loaded from CDN
-- JSX compiled in the browser with Babel Standalone
-- Custom responsive CSS in `styles.css`
-- Lucide icon font
-- Supabase comments/reviews integration
-- GitHub Pages custom domain via `CNAME`
+- React 19
+- Vite 8
+- Supabase reviews with moderation
+- Lucide React icons
+- GitHub Pages deployment through GitHub Actions
 
-## Page sections
+## Local development
 
-- `Navbar`: fixed responsive navigation
-- `Hero`: company message, calls to action, and key service facts
-- `About`: company information and quality values
-- `Services`: tiles, painting, plumbing, and demolition
-- `Process`: four-step project overview
-- `Gallery`: three existing project images with an accessible lightbox
-- `Reviews`: Supabase-backed reviews and submission form
-- `Contact`: technician, phone numbers, email, and service area
-- `Footer`: navigation, services, and contact details
+```bash
+npm install
+npm run dev
+```
 
-## Maintenance
+Production verification:
 
-- Keep business phone numbers, email, service copy, and image URLs consistent across components.
-- Update `trickle/assets` when image sources change.
-- Test both desktop and mobile layouts before merging changes to `main`.
+```bash
+npm run check
+```
+
+The check builds all pages and server-renders every route to verify that required business content is present.
+
+## Pages
+
+- `/` — landing page
+- `/services/plakakia/` — tile installation
+- `/services/elaiokhromatismoi/` — painting
+- `/services/ydraulika/` — plumbing
+- `/services/apoxiloseis/` — demolition
+- `/privacy/` — privacy policy
+- `/terms/` — terms of use
+
+## Business data
+
+Shared business details, service copy and portfolio entries are stored in `src/siteContent.js`. Update that file instead of duplicating contact data across components.
+
+## Reviews
+
+The public site uses the Supabase project referenced in `lib/supabaseClient.js`.
+
+Expected `public.comments` columns:
+
+- `id`
+- `author`
+- `text`
+- `rating`
+- `is_approved`
+- `created_at`
+
+Anonymous visitors may insert reviews with `is_approved = false`. Only approved reviews may be selected publicly. Never expose a Supabase secret or service-role key in this repository.
+
+## Deployment
+
+Pull requests run the production build. Merges to `main` deploy the generated `dist` directory with `.github/workflows/deploy-pages.yml`.
