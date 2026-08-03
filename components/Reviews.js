@@ -2,25 +2,19 @@ function Reviews() {
     const [reviews, setReviews] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [showForm, setShowForm] = React.useState(false);
-    const [formData, setFormData] = React.useState({
-        name: '',
-        rating: 5,
-        comment: ''
-    });
+    const [formData, setFormData] = React.useState({ name: '', rating: 5, comment: '' });
     const [submitting, setSubmitting] = React.useState(false);
 
     const fetchReviews = async () => {
         try {
-            if (!window.sendComment) {
-                console.log("Supabase not initialized yet");
+            if (!window.loadComments) {
                 setLoading(false);
                 return;
             }
-            
+
             const result = await window.loadComments();
-            if (result && Array.isArray(result)) {
-                // Format data to match expected structure
-                const formattedReviews = result.map(item => ({
+            if (Array.isArray(result)) {
+                setReviews(result.map((item) => ({
                     objectId: item.id,
                     objectData: {
                         name: item.author,
@@ -28,8 +22,7 @@ function Reviews() {
                         rating: item.rating || 5,
                         date: item.created_at
                     }
-                }));
-                setReviews(formattedReviews);
+                })));
             }
         } catch (error) {
             console.error('Failed to fetch reviews:', error);
@@ -42,32 +35,17 @@ function Reviews() {
         fetchReviews();
     }, []);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((current) => ({ ...current, [name]: value }));
     };
 
-    const handleRatingChange = (rating) => {
-        setFormData(prev => ({
-            ...prev,
-            rating: rating
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
         setSubmitting(true);
         try {
-            if (!window.sendComment) {
-                throw new Error('Supabase не инициализирована');
-            }
-            
+            if (!window.sendComment) throw new Error('Supabase is not initialized');
             await window.sendComment(formData.name, formData.comment);
-            
-            // Reset form and reload reviews
             setFormData({ name: '', rating: 5, comment: '' });
             setShowForm(false);
             await fetchReviews();
@@ -80,128 +58,109 @@ function Reviews() {
         }
     };
 
-    const renderStars = (rating) => {
-        return [...Array(5)].map((_, i) => (
-            <div 
-                key={i} 
-                className={`w-4 h-4 ${i < rating ? 'icon-star text-yellow-400 fill-yellow-400' : 'icon-star text-slate-300'}`}
-            ></div>
-        ));
-    };
+    const renderStars = (rating) => (
+        <span className="stars" aria-label={`${rating} από 5 αστέρια`}>
+            {[1, 2, 3, 4, 5].map((star) => (
+                <i className={star <= rating ? 'icon-star is-active' : 'icon-star'} key={star} aria-hidden="true"></i>
+            ))}
+        </span>
+    );
 
     return (
-        <section id="reviews" className="section-padding bg-slate-50" data-name="reviews" data-file="components/Reviews.js">
-            <div className="container-custom">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                    <div className="max-w-2xl">
-                        <h2 className="text-sm font-bold text-[var(--accent-color)] tracking-wider uppercase mb-2">ΑΞΙΟΛΟΓΗΣΕΙΣ</h2>
-                        <h3 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Τι λένε οι πελάτες μας</h3>
-                        <p className="text-lg text-slate-600">
+        <section id="reviews" className="section reviews-section" data-name="reviews" data-file="components/Reviews.js">
+            <div className="container">
+                <div className="reviews-head" data-reveal>
+                    <div>
+                        <p className="section-label">Αξιολογήσεις</p>
+                        <h2 className="section-title">Τι λένε οι <span>πελάτες μας.</span></h2>
+                        <p className="section-intro">
                             Η εμπιστοσύνη σας είναι η δύναμή μας. Διαβάστε πραγματικές εμπειρίες από ανθρώπους που μας εμπιστεύτηκαν.
                         </p>
                     </div>
-                    <button 
-                        onClick={() => setShowForm(!showForm)}
-                        className="btn btn-outline border-slate-300 text-slate-700 hover:border-[var(--accent-color)] hover:bg-[var(--accent-color)] hover:text-white flex-shrink-0"
-                    >
-                        <span className="mr-2">{showForm ? 'Κλείσιμο' : 'Γράψτε μια κριτική'}</span>
-                        <div className={showForm ? "icon-x" : "icon-pencil"}></div>
+                    <button className="button button-outline" onClick={() => setShowForm((visible) => !visible)} aria-expanded={showForm}>
+                        {showForm ? 'Κλείσιμο' : 'Γράψτε μια κριτική'}
+                        <span className={showForm ? 'icon-x' : 'icon-pencil'} aria-hidden="true"></span>
                     </button>
                 </div>
 
-                {/* Review Form */}
                 {showForm && (
-                    <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-slate-100 mb-12 animate-fade-in">
-                        <h4 className="text-xl font-bold mb-6 text-slate-900">Νέα Αξιολόγηση</h4>
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-2">Όνομα</label>
-                                    <input 
-                                        type="text" 
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent outline-none"
-                                        placeholder="Το όνομά σας"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-2">Βαθμολογία</label>
-                                    <div className="flex gap-2">
-                                        {[1, 2, 3, 4, 5].map((star) => (
-                                            <button
-                                                key={star}
-                                                type="button"
-                                                onClick={() => handleRatingChange(star)}
-                                                className="focus:outline-none transition-transform hover:scale-110"
-                                            >
-                                                <div className={`w-8 h-8 ${star <= formData.rating ? 'icon-star text-yellow-400 fill-yellow-400' : 'icon-star text-slate-300'}`}></div>
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
+                    <form className="review-form" onSubmit={handleSubmit}>
+                        <div className="form-field">
+                            <label htmlFor="review-name">Όνομα</label>
+                            <input
+                                id="review-name"
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                required
+                                placeholder="Το όνομά σας"
+                            />
+                        </div>
+
+                        <fieldset className="rating-field">
+                            <legend>Βαθμολογία</legend>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">Σχόλιο</label>
-                                <textarea 
-                                    name="comment"
-                                    value={formData.comment}
-                                    onChange={handleInputChange}
-                                    required
-                                    rows="3"
-                                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent outline-none"
-                                    placeholder="Η εμπειρία σας μαζί μας..."
-                                ></textarea>
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <button
+                                        key={star}
+                                        type="button"
+                                        onClick={() => setFormData((current) => ({ ...current, rating: star }))}
+                                        aria-label={`${star} αστέρια`}
+                                        aria-pressed={star === formData.rating}
+                                    >
+                                        <span className={`icon-star ${star <= formData.rating ? 'is-active' : ''}`} aria-hidden="true"></span>
+                                    </button>
+                                ))}
                             </div>
-                            <div className="flex justify-end">
-                                <button 
-                                    type="submit" 
-                                    disabled={submitting}
-                                    className="btn btn-primary"
-                                >
-                                    {submitting ? 'Αποστολή...' : 'Δημοσίευση Αξιολόγησης'}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                        </fieldset>
+
+                        <div className="form-field review-comment">
+                            <label htmlFor="review-comment">Σχόλιο</label>
+                            <textarea
+                                id="review-comment"
+                                name="comment"
+                                value={formData.comment}
+                                onChange={handleInputChange}
+                                required
+                                rows="4"
+                                placeholder="Η εμπειρία σας μαζί μας..."
+                            ></textarea>
+                        </div>
+
+                        <button className="button button-primary review-submit" type="submit" disabled={submitting}>
+                            {submitting ? 'Αποστολή...' : 'Δημοσίευση Αξιολόγησης'}
+                        </button>
+                    </form>
                 )}
 
-                {/* Reviews Grid */}
                 {loading ? (
-                    <div className="flex justify-center py-12">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--accent-color)]"></div>
+                    <div className="reviews-loading" role="status">
+                        <span></span>
+                        Φόρτωση αξιολογήσεων
+                    </div>
+                ) : reviews.length > 0 ? (
+                    <div className="reviews-grid">
+                        {reviews.map((review, index) => (
+                            <article className="review-card" key={review.objectId} data-reveal style={{ transitionDelay: `${index * 70}ms` }}>
+                                <div className="review-card-top">
+                                    {renderStars(review.objectData.rating)}
+                                    <time dateTime={review.objectData.date}>
+                                        {new Date(review.objectData.date).toLocaleDateString('el-GR')}
+                                    </time>
+                                </div>
+                                <blockquote>“{review.objectData.comment}”</blockquote>
+                                <div className="review-author">
+                                    <span>{review.objectData.name ? review.objectData.name.charAt(0).toUpperCase() : 'T'}</span>
+                                    <strong>{review.objectData.name}</strong>
+                                </div>
+                            </article>
+                        ))}
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {reviews.length > 0 ? (
-                            reviews.map((item) => (
-                                <div key={item.objectId} className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex flex-col h-full hover:shadow-md transition-shadow">
-                                    <div className="flex justify-between items-start mb-4">
-                                        <div className="flex items-center space-x-1">
-                                            {renderStars(item.objectData.rating)}
-                                        </div>
-                                        <span className="text-xs text-slate-400">
-                                            {new Date(item.objectData.date).toLocaleDateString('el-GR')}
-                                        </span>
-                                    </div>
-                                    <p className="text-slate-600 mb-6 flex-grow italic">
-                                        "{item.objectData.comment}"
-                                    </p>
-                                    <div className="flex items-center mt-auto">
-                                        <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 mr-3">
-                                            <div className="icon-user text-lg"></div>
-                                        </div>
-                                        <span className="font-bold text-slate-900">{item.objectData.name}</span>
-                                    </div>
-                                </div>
-                            ))
-                        ) : (
-                            <div className="col-span-full text-center py-12 text-slate-500">
-                                Δεν υπάρχουν ακόμα αξιολογήσεις. Γίνετε ο πρώτος που θα γράψει!
-                            </div>
-                        )}
+                    <div className="reviews-empty" data-reveal>
+                        <span className="icon-message-square" aria-hidden="true"></span>
+                        <p>Δεν υπάρχουν ακόμα αξιολογήσεις. Γίνετε ο πρώτος που θα γράψει!</p>
                     </div>
                 )}
             </div>

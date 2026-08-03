@@ -3,92 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechnoHome.gr – Ανακαινίσεις & Υπηρεσίες</title>
-    <meta name="description" content="Η TechnoHome.gr αναλαμβάνει ολοκληρωμένες ή μερικές ανακαινίσεις, με έμφαση στην ποιότητα και αξιοπιστία.">
-    <meta name="keywords" content="Ανακαινίσεις, Υδραυλικά, Ηλεκτρολογικά, Βάψιμο, Πλακάκια, Θεσσαλονίκη">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="TechnoHome.gr – Ανακαινίσεις & Υπηρεσίες">
-    <meta property="og:description" content="Υπηρεσίες ανακαίνισης υψηλής ποιότητας στη Θεσσαλονίκη.">
+    <meta name="theme-color" content="#111111">
+    <title>TechnoHome.gr – Ανακαινίσεις & Τεχνικές Υπηρεσίες</title>
+    <meta name="description" content="Η TechnoHome.gr αναλαμβάνει ολοκληρωμένες ή μερικές ανακαινίσεις και τεχνικές εργασίες στη Θεσσαλονίκη, με έμφαση στην ποιότητα και αξιοπιστία.">
+    <meta name="keywords" content="Ανακαινίσεις, Υδραυλικά, Ελαιοχρωματισμοί, Πλακάκια, Αποξηλώσεις, Θεσσαλονίκη">
 
-    <!-- React & Tailwind -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="el_GR">
+    <meta property="og:url" content="https://techno-home.gr/">
+    <meta property="og:title" content="TechnoHome.gr – Ανακαινίσεις & Τεχνικές Υπηρεσίες">
+    <meta property="og:description" content="Υπηρεσίες ανακαίνισης υψηλής ποιότητας στη Θεσσαλονίκη.">
+    <meta property="og:image" content="https://app.trickle.so/storage/public/images/usr_1b48c29310000001/a5e5b453-44bb-498d-a974-0efcd703eec4.jpeg">
+
     <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
     <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
-    
-    <!-- Google Fonts for Greek support -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style type="text/tailwindcss">
-    @layer theme {
-        :root {
-            --primary-color: #0f172a; /* Slate 900 */
-            --secondary-color: #334155; /* Slate 700 */
-            --accent-color: #0ea5e9; /* Sky 500 */
-            --accent-hover: #0284c7; /* Sky 600 */
-            --light-bg: #f8fafc;
-        }
-    }
-
-    @layer base {
-        body {
-            font-family: 'Manrope', sans-serif;
-            @apply text-slate-800 bg-white;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            @apply font-bold tracking-tight text-[var(--primary-color)];
-        }
-    }
-
-    @layer components {
-        .container-custom {
-            @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-        }
-        .btn {
-            @apply inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
-        }
-        .btn-primary {
-            @apply bg-[var(--accent-color)] text-white hover:bg-[var(--accent-hover)] focus:ring-[var(--accent-color)];
-        }
-        .btn-outline {
-            @apply border-2 border-white text-white hover:bg-white hover:text-[var(--primary-color)];
-        }
-        .section-padding {
-            @apply py-16 sm:py-24;
-        }
-        
-        @keyframes ken-burns {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-        .animate-ken-burns {
-            animation: ken-burns 20s ease-out infinite alternate;
-        }
-    }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Μετάβαση στο κύριο περιεχόμενο</a>
     <div id="root"></div>
-    
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase.js"></script>
-    
-    <!-- Components -->
+
     <script type="text/babel" src="components/Navbar.js"></script>
     <script type="text/babel" src="components/Hero.js"></script>
     <script type="text/babel" src="components/About.js"></script>
     <script type="text/babel" src="components/Services.js"></script>
+    <script type="text/babel" src="components/Process.js"></script>
     <script type="text/babel" src="components/Gallery.js"></script>
     <script type="text/babel" src="components/Reviews.js"></script>
     <script type="text/babel" src="components/Contact.js"></script>
     <script type="text/babel" src="components/Footer.js"></script>
-    
-    <!-- Main App -->
     <script type="text/babel" src="app.js"></script>
 </body>
 </html>
