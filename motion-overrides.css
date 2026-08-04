@@ -1,0 +1,35 @@
+.comparison-finish {
+  width: 100%;
+  clip-path: inset(0 calc(100% - var(--compare-position)) 0 0);
+  border-right: 0;
+}
+
+.comparison-finish img {
+  width: 100%;
+  max-width: none;
+}
+
+.result-comparison::before {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  bottom: 0;
+  left: var(--compare-position);
+  width: 1px;
+  background: rgba(255,255,255,.9);
+  transform: translateX(-.5px);
+  pointer-events: none;
+}
+
+@media (max-width: 1050px) {
+  .hero-blueprint {
+    left: 48%;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-blueprint {
+    left: 18%;
+  }
+}
