@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "restore:html": "node scripts/restore-html-entries.mjs",
+    "predev": "npm run restore:html",
     "dev": "vite --host 0.0.0.0",
+    "prebuild": "npm run restore:html",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test:render": "node scripts/render-check.mjs",
