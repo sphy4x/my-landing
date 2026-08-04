@@ -2,44 +2,42 @@ import React from 'react';
 
 const steps = [
   {
-    number: '01',
-    title: 'Καθαίρεση',
-    eyebrow: 'REMOVE',
+    number: '01', title: 'Καθαίρεση', eyebrow: 'REMOVE',
     text: 'Αποξηλώνουμε παλιές επενδύσεις και κατασκευές, ενώ οι ελεγχόμενες καθαιρέσεις ανοίγουν τον δρόμο για τη νέα διαρρύθμιση.',
     image: '/assets/images/hero-demolition.webp'
   },
   {
-    number: '02',
-    title: 'Νέα Διαρρύθμιση',
-    eyebrow: 'RESHAPE',
+    number: '02', title: 'Νέα Διαρρύθμιση', eyebrow: 'RESHAPE',
     text: 'Ορίζουμε τις νέες γραμμές του χώρου, τα ανοίγματα και τα χωρίσματα ώστε η κατασκευή να υπηρετεί την καθημερινή χρήση.',
     image: '/assets/images/hero-demolition.webp'
   },
   {
-    number: '03',
-    title: 'Γυψοσανίδα',
-    eyebrow: 'BUILD',
-    text: 'Κατασκευάζουμε χωρίσματα, ψευδοροφές, επενδύσεις και ειδικές λεπτομέρειες με καθαρές ενώσεις και ακριβή γεωμετρία.',
-    image: '/assets/images/service-painting.webp'
+    number: '03', title: 'Υδραυλικά', eyebrow: 'CONNECT',
+    text: 'Τοποθετούμε και προσαρμόζουμε τις απαραίτητες παροχές στο σωστό στάδιο, πριν κλείσουν οι επιφάνειες και ολοκληρωθεί ο χώρος.',
+    image: '/assets/images/service-plumbing.webp'
   },
   {
-    number: '04',
-    title: 'Τσιμεντοκονία',
-    eyebrow: 'PREPARE',
+    number: '04', title: 'Γυψοσανίδα', eyebrow: 'BUILD',
+    text: 'Κατασκευάζουμε χωρίσματα, ψευδοροφές, επενδύσεις και ειδικές λεπτομέρειες με καθαρές ενώσεις και ακριβή γεωμετρία.',
+    image: '/assets/images/about-renovation.webp'
+  },
+  {
+    number: '05', title: 'Τσιμεντοκονία', eyebrow: 'PREPARE',
     text: 'Δημιουργούμε σταθερές και επίπεδες βάσεις ώστε κάθε επόμενο υλικό να εφαρμοστεί σωστά και να αντέξει στον χρόνο.',
     image: '/assets/images/project-paving.webp'
   },
   {
-    number: '05',
-    title: 'Πλακίδια',
-    eyebrow: 'ALIGN',
+    number: '06', title: 'Πλακίδια', eyebrow: 'ALIGN',
     text: 'Χαράζουμε, ευθυγραμμίζουμε και τοποθετούμε τα πλακίδια με ακρίβεια στις αποστάσεις, στις κοπές και στις λεπτομέρειες.',
     image: '/assets/images/service-tiles.webp'
   },
   {
-    number: '06',
-    title: 'Παράδοση',
-    eyebrow: 'REVEAL',
+    number: '07', title: 'Ελαιοχρωματισμοί', eyebrow: 'FINISH',
+    text: 'Προετοιμάζουμε, στοκάρουμε και βάφουμε τις επιφάνειες ώστε το χρώμα να είναι καθαρό, ομοιόμορφο και ανθεκτικό.',
+    image: '/assets/images/service-painting.webp'
+  },
+  {
+    number: '08', title: 'Παράδοση', eyebrow: 'REVEAL',
     text: 'Το τεχνικό υπόβαθρο υποχωρεί και αποκαλύπτεται ένας καθαρός, λειτουργικός και ολοκληρωμένος χώρος.',
     image: '/assets/images/about-renovation.webp'
   }
@@ -56,9 +54,7 @@ export default function Process() {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveIndex(Number(entry.target.dataset.stageIndex));
-        }
+        if (entry.isIntersecting) setActiveIndex(Number(entry.target.dataset.stageIndex));
       });
     }, { rootMargin: '-30% 0px -48% 0px', threshold: 0 });
 
@@ -72,7 +68,7 @@ export default function Process() {
         <div className="process-intro" data-reveal>
           <p className="section-label">Structure → Space</p>
           <h2 className="section-title">Από την καθαίρεση στο <span>τελικό αποτέλεσμα.</span></h2>
-          <p className="section-intro">Έξι στάδια. Μία καθαρή συνέχεια. Κάθε εργασία προετοιμάζει σωστά την επόμενη.</p>
+          <p className="section-intro">Οκτώ στάδια. Μία καθαρή συνέχεια. Κάθε εργασία προετοιμάζει σωστά την επόμενη.</p>
         </div>
 
         <div className="process-story">
