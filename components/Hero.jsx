@@ -65,10 +65,10 @@ export default function Hero() {
 
       <div className="container hero-content">
         <div className="hero-copy" data-reveal>
-          <p className="eyebrow"><span></span> Καθαιρέσεις · Γυψοσανίδες · Πλακάκια</p>
+          <p className="eyebrow"><span></span> Καθαιρέσεις · Υδραυλικά · Γυψοσανίδες · Πλακάκια</p>
           <h1>Από τη δομή.<br /><strong>Στον χώρο που θέλετε<span>.</span></strong></h1>
           <p className="hero-lead">
-            25+ χρόνια εμπειρίας στη Θεσσαλονίκη. Καθαιρέσεις, νέες διαμορφώσεις, γυψοσανίδες, τσιμεντοκονίες, πλακίδια και ανακαινίσεις μπάνιου με ακρίβεια σε κάθε στάδιο.
+            25+ χρόνια εμπειρίας στη Θεσσαλονίκη. Καθαιρέσεις, υδραυλικά, γυψοσανίδες, τσιμεντοκονίες, πλακίδια, ελαιοχρωματισμοί και ανακαινίσεις μπάνιου με ακρίβεια σε κάθε στάδιο.
           </p>
           <div className="hero-actions">
             <button className="button button-primary" onClick={() => scrollTo('contact')}>
