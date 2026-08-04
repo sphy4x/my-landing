@@ -77,6 +77,34 @@ function useRevealAnimations() {
   }, []);
 }
 
+function usePageProgress() {
+  React.useEffect(() => {
+    const root = document.documentElement;
+    let frame = 0;
+
+    const updateProgress = () => {
+      const scrollable = root.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(Math.max(window.scrollY / scrollable, 0), 1) : 0;
+      root.style.setProperty('--page-progress', progress.toFixed(4));
+      frame = 0;
+    };
+
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+
+    return () => {
+      window.removeEventListener('scroll', requestUpdate);
+      window.removeEventListener('resize', requestUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+}
+
 function HomePage() {
   useRevealAnimations();
 
@@ -111,8 +139,11 @@ function RoutedPage() {
 }
 
 export default function App() {
+  usePageProgress();
+
   return (
     <ErrorBoundary>
+      <div className="site-progress" aria-hidden="true"></div>
       <RoutedPage />
     </ErrorBoundary>
   );
