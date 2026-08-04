@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Bath, Grid3X3, Hammer, PaintRoller, Wrench } from 'lucide-react';
+import { ArrowUpRight, Grid3X3, Hammer, PaintRoller, Wrench } from 'lucide-react';
 import { SERVICES } from '../src/siteContent.js';
 
 const icons = {
@@ -9,7 +9,7 @@ const icons = {
   cement: Hammer,
   tiles: Grid3X3,
   painting: PaintRoller,
-  bathroom: Bath
+  bathroom: Wrench
 };
 
 export default function Services() {
