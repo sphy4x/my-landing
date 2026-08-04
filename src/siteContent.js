@@ -20,7 +20,7 @@ export const METRICS = [
 
 export const SERVICES = [
   {
-    id: 'demolition', slug: 'kathaireseis-apoxiloseis', number: '01',
+    id: 'demolition', slug: 'apoxiloseis', number: '01',
     title: 'Καθαιρέσεις & Αποξηλώσεις', menuTitle: 'Καθαιρέσεις & Αποξηλώσεις',
     description: 'Ελεγχόμενες καθαιρέσεις τοίχων, χωρισμάτων, πλακιδίων και παλιών κατασκευών.',
     image: '/assets/images/service-demolition.webp',
@@ -29,7 +29,7 @@ export const SERVICES = [
     bullets: ['Καθαιρέσεις εσωτερικών τοίχων', 'Αποξηλώσεις πλακιδίων', 'Απομάκρυνση παλιών κατασκευών', 'Προετοιμασία χώρου']
   },
   {
-    id: 'plumbing', slug: 'ydraulikes-ergasies', number: '02',
+    id: 'plumbing', slug: 'ydraulika', number: '02',
     title: 'Υδραυλικές Εργασίες', menuTitle: 'Υδραυλικές Εργασίες',
     description: 'Παρεμβάσεις και αλλαγές εγκαταστάσεων για μπάνιο, κουζίνα και εργασίες ανακαίνισης.',
     image: '/assets/images/service-plumbing.webp',
