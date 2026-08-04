@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-brand">
           <strong>Techno<span>Home.gr</span></strong>
-          <p>Εξειδικευμένες εργασίες διαμόρφωσης στη Θεσσαλονίκη με 25+ χρόνια εμπειρίας: καθαιρέσεις, υδραυλικά, γυψοσανίδες, τσιμεντοκονίες, πλακίδια, ελαιοχρωματισμοί και μπάνια.</p>
+          <p>Ανακαινίσεις και τεχνικές υπηρεσίες στη Θεσσαλονίκη με 15+ χρόνια εμπειρίας, καθαρή συνεννόηση και προσοχή στη λεπτομέρεια.</p>
         </div>
 
         <div className="footer-column">
