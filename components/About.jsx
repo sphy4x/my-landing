@@ -2,9 +2,9 @@ import React from 'react';
 import { Clock3, Handshake, ShieldCheck, Users } from 'lucide-react';
 
 const values = [
-  { Icon: ShieldCheck, title: 'Σωστή Προετοιμασία' },
+  { Icon: ShieldCheck, title: 'Ποιοτικά Υλικά' },
   { Icon: Clock3, title: 'Συνέπεια στο Χρόνο' },
-  { Icon: Users, title: '25+ Χρόνια Εμπειρίας' },
+  { Icon: Users, title: 'Έμπειρο Προσωπικό' },
   { Icon: Handshake, title: 'Καθαρή Συνεννόηση' }
 ];
 
@@ -13,14 +13,14 @@ export default function About() {
     <section id="about" className="section about-section">
       <div className="container about-grid">
         <div className="about-copy" data-reveal>
-          <p className="section-label">Η TechnoHome.gr</p>
-          <h2 className="section-title">Αλλάζουμε τη δομή. <span>Αναβαθμίζουμε τον χώρο.</span></h2>
+          <p className="section-label">Σχετικά με εμάς</p>
+          <h2 className="section-title">Δημιουργούμε τον χώρο που <span>ονειρεύεστε.</span></h2>
           <div className="about-text">
             <p>
-              Η <strong>TechnoHome.gr</strong> αναλαμβάνει καθαιρέσεις, υδραυλικές εργασίες, κατασκευές γυψοσανίδας, τσιμεντοκονίες, πλακίδια, ελαιοχρωματισμούς και ανακαινίσεις μπάνιου.
+              Η <strong>TechnoHome.gr</strong> ειδικεύεται στις ανακαινίσεις και τις τεχνικές εργασίες, προσφέροντας λύσεις που συνδυάζουν αισθητική και λειτουργικότητα.
             </p>
             <p>
-              Με περισσότερα από <strong>25 χρόνια εμπειρίας</strong> και πάνω από <strong>1000 ολοκληρωμένα έργα</strong>, οργανώνουμε κάθε στάδιο με υπευθυνότητα, ακρίβεια και σταθερή επικοινωνία.
+              Με περισσότερα από <strong>15 χρόνια εμπειρίας</strong> και πάνω από <strong>1000 ολοκληρωμένα έργα</strong>, οργανώνουμε κάθε εργασία με υπευθυνότητα, προσοχή στη λεπτομέρεια και σταθερή επικοινωνία.
             </p>
           </div>
 
@@ -37,13 +37,13 @@ export default function About() {
         <div className="about-visual" data-reveal>
           <img
             src="/assets/images/about-renovation.webp"
-            alt="Ολοκληρωμένη σύγχρονη διαμόρφωση εσωτερικού χώρου"
+            alt="Ολοκληρωμένη σύγχρονη ανακαίνιση εσωτερικού χώρου"
             width="1200"
             height="816"
             loading="lazy"
           />
           <div className="quality-card">
-            <span className="quality-number">25+</span>
+            <span className="quality-number">15+</span>
             <div><span>Χρόνια</span><strong>Εμπειρίας</strong></div>
           </div>
         </div>
