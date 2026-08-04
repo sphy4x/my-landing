@@ -4,9 +4,11 @@ import { SERVICES } from '../src/siteContent.js';
 
 const icons = {
   demolition: Hammer,
-  drywall: PaintRoller,
-  cement: Wrench,
+  plumbing: Wrench,
+  drywall: Grid3X3,
+  cement: Hammer,
   tiles: Grid3X3,
+  painting: PaintRoller,
   bathroom: Bath
 };
 
@@ -17,9 +19,9 @@ export default function Services() {
         <div className="section-head" data-reveal>
           <div>
             <p className="section-label">Οι Εξειδικεύσεις μας</p>
-            <h2 className="section-title">Η κατασκευή πίσω από έναν <span>σωστό χώρο.</span></h2>
+            <h2 className="section-title">Όλα τα βασικά στάδια για έναν <span>σωστό χώρο.</span></h2>
           </div>
-          <p className="section-intro">Από την καθαίρεση και τη νέα διαρρύθμιση έως τη γυψοσανίδα, την τσιμεντοκονία και την ακριβή τοποθέτηση πλακιδίων.</p>
+          <p className="section-intro">Από την καθαίρεση και τα υδραυλικά έως τη γυψοσανίδα, την τσιμεντοκονία, τα πλακίδια και την τελική βαφή.</p>
         </div>
 
         <div className="services-grid">
