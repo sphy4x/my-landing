@@ -15,7 +15,7 @@ export default function Hero() {
           <p className="eyebrow"><span></span> Ανακαινίσεις & Τεχνικές Εργασίες</p>
           <h1>Χτίζουμε το<br /><strong>Μέλλον του Σπιτιού<span>.</span></strong></h1>
           <p className="hero-lead">
-            Περισσότερα από 15 χρόνια εμπειρίας και 1000 ολοκληρωμένα έργα στη Θεσσαλονίκη — από τη μελέτη μέχρι την παράδοση.
+            Περισσότερα από 25 χρόνια εμπειρίας και 1000 ολοκληρωμένα έργα στη Θεσσαλονίκη — από τη μελέτη μέχρι την παράδοση.
           </p>
           <div className="hero-actions">
             <button className="button button-primary" onClick={() => scrollTo('contact')}>
