@@ -20,7 +20,7 @@ export default function About() {
               Η <strong>TechnoHome.gr</strong> ειδικεύεται στις ανακαινίσεις και τις τεχνικές εργασίες, προσφέροντας λύσεις που συνδυάζουν αισθητική και λειτουργικότητα.
             </p>
             <p>
-              Με περισσότερα από <strong>15 χρόνια εμπειρίας</strong> και πάνω από <strong>1000 ολοκληρωμένα έργα</strong>, οργανώνουμε κάθε εργασία με υπευθυνότητα, προσοχή στη λεπτομέρεια και σταθερή επικοινωνία.
+              Με περισσότερα από <strong>25 χρόνια εμπειρίας</strong> και πάνω από <strong>1000 ολοκληρωμένα έργα</strong>, οργανώνουμε κάθε εργασία με υπευθυνότητα, προσοχή στη λεπτομέρεια και σταθερή επικοινωνία.
             </p>
           </div>
 
@@ -43,7 +43,7 @@ export default function About() {
             loading="lazy"
           />
           <div className="quality-card">
-            <span className="quality-number">15+</span>
+            <span className="quality-number">25+</span>
             <div><span>Χρόνια</span><strong>Εμπειρίας</strong></div>
           </div>
         </div>
