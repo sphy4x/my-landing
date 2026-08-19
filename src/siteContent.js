@@ -12,7 +12,7 @@ export const BUSINESS = {
 };
 
 export const METRICS = [
-  { value: '15+', label: 'Χρόνια Εμπειρίας' },
+  { value: '25+', label: 'Χρόνια Εμπειρίας' },
   { value: '1000+', label: 'Ολοκληρωμένα Έργα' },
   { value: 'ΘΕΣ/ΝΙΚΗ', label: 'Περιοχή Εξυπηρέτησης' },
   { value: '4', label: 'Βασικές Υπηρεσίες' }
@@ -87,7 +87,7 @@ export const PROJECTS = [
   },
   {
     src: '/assets/images/project-mosaic.webp',
-    title: 'Ειδική Κατασκευή Ψηφιδωτού',
+    title: 'Ειδική Κατασκευή Ψηφωτού',
     category: 'Πλακάκια & Λεπτομέρειες'
   }
 ];
