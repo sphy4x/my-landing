@@ -87,7 +87,7 @@ export const PROJECTS = [
   },
   {
     src: '/assets/images/project-mosaic.webp',
-    title: 'Ειδική Κατασκευή Ψηφωτού',
+    title: 'Ειδική Κατασκευή Ψηφιδωτού',
     category: 'Πλακάκια & Λεπτομέρειες'
   }
 ];
