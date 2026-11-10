@@ -15,7 +15,8 @@ create table if not exists public.technohome_inquiries (
   service text not null check (service in ('tiles','painting','plumbing','demolition','bathroom-renovation','home-renovation')),
   area text not null default '' check (char_length(area) <= 100),
   details text not null default '' check (char_length(details) <= 700),
-  status text not null default 'new' check (status in ('new','contacted','done'))
+  status text not null default 'new' check (status in ('new','contacted','done')),
+  consent_at timestamptz not null default now()
 );
 
 create index if not exists technohome_inquiries_created_at_idx
