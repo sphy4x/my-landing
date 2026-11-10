@@ -9,6 +9,7 @@ const entries = [
   ['source-pages/services/apoxiloseis/index.html', 'services/apoxiloseis/index.html'],
   ['source-pages/services/anakainisi-baniou/index.html', 'services/anakainisi-baniou/index.html'],
   ['source-pages/services/anakainiseis/index.html', 'services/anakainiseis/index.html'],
+  ['source-pages/manager/index.html', 'manager/index.html'],
   ['source-pages/privacy/index.html', 'privacy/index.html'],
   ['source-pages/terms/index.html', 'terms/index.html']
 ];
