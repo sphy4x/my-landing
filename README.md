@@ -25,6 +25,13 @@ npm run check
 
 The check builds all pages and server-renders every route to verify that required business content is present.
 
+## Android Manager
+
+- `/manager/` — installable private Techno Home Manager PWA, protected by a separate Supabase project and RLS.
+- The `source-pages/manager/index.html` original is restored before every build. Never feed the compiled `manager/index.html` back into Vite — it freezes the JavaScript bundle.
+- Existing homepage contact form continues using Viber until a tested backend and technician account are connected.
+- Project setup and staged-launch checklist: `docs/technohome-manager-setup.md`.
+
 ## Pages
 
 - `/` — landing page
