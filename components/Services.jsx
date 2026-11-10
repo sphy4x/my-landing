@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, Grid3X3, Hammer, PaintRoller, Wrench } from 'lucide-react';
-import { SERVICES } from '../src/siteContent.js';
+import { SERVICES, FEATURED_SERVICES } from '../src/siteContent.js';
 
 const icons = { tiles: Grid3X3, painting: PaintRoller, plumbing: Wrench, demolition: Hammer };
 
@@ -40,6 +40,12 @@ export default function Services() {
               </a>
             );
           })}
+        </div>
+        <div className="related-service-links" data-reveal>
+          <span>Περισσότερες επιλογές:</span>
+          {FEATURED_SERVICES.map((service) => (
+            <a href={`/services/${service.slug}/`} key={service.slug}>{service.menuTitle} <ArrowUpRight size={15} aria-hidden="true" /></a>
+          ))}
         </div>
       </div>
     </section>
