@@ -8,7 +8,7 @@ export const isConfigured = Boolean(supabaseUrl && supabaseKey);
 
 export const managerDb = isConfigured
   ? createClient(supabaseUrl, supabaseKey, {
-    auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: false }
+    auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true, flowType: 'implicit' }
   })
   : null;
 
