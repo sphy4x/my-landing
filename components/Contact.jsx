@@ -174,7 +174,7 @@ export default function Contact() {
               {isSubmitting ? 'Αποστολή...' : leadEndpoint ? 'Αποστολή αιτήματος' : 'Άνοιγμα στο Viber'} <ArrowRight size={18} aria-hidden="true" />
             </button>
             {status && <p className="inquiry-status" role="status">{status}</p>}
-            {submissionFailed && <p className="inquiry-status">Εναλλακτικά: <a href={BUSINESS.viberHref}>Επικοινωνία μέσω Viber</a></p>
+            {submissionFailed && <p className="inquiry-status">Εναλλακτικά: <a href={BUSINESS.viberHref}>Επικοινωνία μέσω Viber</a></p>}
           </form>
         </div>
 
