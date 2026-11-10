@@ -51,7 +51,7 @@ revoke all on public.technohome_rate_limits from anon, authenticated;
 grant select on public.technohome_managers to authenticated;
 grant select on public.technohome_inquiries to authenticated;
 grant update(status) on public.technohome_inquiries to authenticated;
-grant select, insert, update(payload,updated_at), delete on public.technohome_push_subscriptions to authenticated;
+grant select, insert, update, delete on public.technohome_push_subscriptions to authenticated;
 
 create policy "manager can read own membership"
   on public.technohome_managers for select to authenticated
