@@ -12,6 +12,8 @@ const paths = [
   '/services/elaiokhromatismoi/',
   '/services/ydraulika/',
   '/services/apoxiloseis/',
+  '/services/anakainisi-baniou/',
+  '/services/anakainiseis/',
   '/privacy/',
   '/terms/'
 ];

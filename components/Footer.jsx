@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
-import { BUSINESS, SERVICES } from '../src/siteContent.js';
+import { BUSINESS, SERVICES, FEATURED_SERVICES } from '../src/siteContent.js';
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-brand">
           <strong>Techno<span>Home.gr</span></strong>
-          <p>Ανακαινίσεις και τεχνικές υπηρεσίες στη Θεσσαλονίκη με 15+ χρόνια εμπειρίας, καθαρή συνεννόηση και προσοχή στη λεπτομέρεια.</p>
+          <p>Ανακαινίσεις και τεχνικές υπηρεσίες στη Θεσσαλονίκη με πολυετή εμπειρία, καθαρή συνεννόηση και προσοχή στη λεπτομέρεια.</p>
         </div>
 
         <div className="footer-column">
@@ -21,7 +21,7 @@ export default function Footer() {
 
         <div className="footer-column">
           <h3>Υπηρεσίες</h3>
-          {SERVICES.map((service) => <a key={service.id} href={`/services/${service.slug}/`}>{service.menuTitle}</a>)}
+          {[...SERVICES, ...FEATURED_SERVICES].map((service) => <a key={service.id} href={`/services/${service.slug}/`}>{service.menuTitle}</a>)}
         </div>
 
         <div className="footer-column footer-contact">

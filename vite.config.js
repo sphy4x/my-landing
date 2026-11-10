@@ -14,6 +14,8 @@ export default defineConfig({
         painting: resolve(import.meta.dirname, 'services/elaiokhromatismoi/index.html'),
         plumbing: resolve(import.meta.dirname, 'services/ydraulika/index.html'),
         demolition: resolve(import.meta.dirname, 'services/apoxiloseis/index.html'),
+        bathroom: resolve(import.meta.dirname, 'services/anakainisi-baniou/index.html'),
+        renovation: resolve(import.meta.dirname, 'services/anakainiseis/index.html'),
         privacy: resolve(import.meta.dirname, 'privacy/index.html'),
         terms: resolve(import.meta.dirname, 'terms/index.html')
       }

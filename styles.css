@@ -2075,3 +2075,11 @@ img {
         transform: none;
     }
 }
+
+/* Text-first SEO landing pages: reuse the existing typography and palette. */
+.service-info-block { max-width: 860px; padding: 14px 0 20px; }
+.service-info-block h2, .service-info-block h3 { color: var(--text); margin: 0 0 12px; line-height: 1.35; font-size: clamp(1.18rem, 2vw, 1.55rem); }
+.service-info-block p { color: var(--muted-strong); margin: 0; line-height: 1.75; }
+.related-service-links { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; margin-top: 32px; color: var(--muted-strong); }
+.related-service-links a { display: inline-flex; align-items: center; gap: 5px; color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.related-service-links a:hover { color: var(--accent); }

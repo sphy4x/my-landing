@@ -39,6 +39,35 @@ export default function ServicePage({ service }) {
           </div>
         </section>
 
+        {service.content?.length > 0 && (
+          <section className="section service-page-details">
+            <div className="container">
+              <p className="section-label">Πληροφορίες Υπηρεσίας</p>
+              {service.content.map((item) => (
+                <article key={item.title} className="service-info-block">
+                  <h2>{item.title}</h2>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {service.faq?.length > 0 && (
+          <section className="section service-page-details" aria-label="Συχνές ερωτήσεις">
+            <div className="container">
+              <p className="section-label">Χρήσιμες Πληροφορίες</p>
+              <h2 className="section-title">Συχνές <span>ερωτήσεις.</span></h2>
+              {service.faq.map((item) => (
+                <article key={item.question} className="service-info-block">
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
         <section className="section service-page-cta">
           <div className="container">
             <p className="section-label">Επικοινωνία</p>

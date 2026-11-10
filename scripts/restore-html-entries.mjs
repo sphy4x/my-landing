@@ -7,6 +7,8 @@ const entries = [
   ['source-pages/services/elaiokhromatismoi/index.html', 'services/elaiokhromatismoi/index.html'],
   ['source-pages/services/ydraulika/index.html', 'services/ydraulika/index.html'],
   ['source-pages/services/apoxiloseis/index.html', 'services/apoxiloseis/index.html'],
+  ['source-pages/services/anakainisi-baniou/index.html', 'services/anakainisi-baniou/index.html'],
+  ['source-pages/services/anakainiseis/index.html', 'services/anakainiseis/index.html'],
   ['source-pages/privacy/index.html', 'privacy/index.html'],
   ['source-pages/terms/index.html', 'terms/index.html']
 ];
