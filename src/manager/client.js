@@ -1,7 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
-export const supabaseUrl = import.meta.env.VITE_TH_MANAGER_SUPABASE_URL || '';
-export const supabaseKey = import.meta.env.VITE_TH_MANAGER_SUPABASE_KEY || '';
+export const supabaseUrl = import.meta.env.VITE_TH_MANAGER_SUPABASE_URL || 'https://ilbvnkuubwmqpahtjiio.supabase.co';
+// Publishable keys are designed to be public; RLS controls all client access.
+export const supabaseKey = import.meta.env.VITE_TH_MANAGER_SUPABASE_KEY || 'sb_publishable_tXduYMXym42xnUmfft0IKw_kdxvpUEW';
 export const vapidPublicKey = import.meta.env.VITE_TH_MANAGER_VAPID_PUBLIC_KEY || '';
 export const isConfigured = Boolean(supabaseUrl && supabaseKey);
 
