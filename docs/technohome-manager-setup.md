@@ -1,6 +1,6 @@
 # Techno Home Manager — Android PWA setup
 
-Status: **code prepared in GitHub; production activation is blocked until backend access is provided and tests pass**.
+Status (11 Nov 2026): **Supabase backend created and RLS enabled; PWA published in safe mode. Technician login and Android push still need configuration and live testing.**
 
 ## Architecture
 
@@ -12,25 +12,25 @@ Status: **code prepared in GitHub; production activation is blocked until backen
 
 ## Blocker: Supabase access
 
-The existing TechnoHome reviews project is `dubkthkfebmoakmpxumh`. It is not accessible with the currently connected Supabase account (permission denied). DO NOT use the NOXA Supabase project. Request proper TechnoHome project access from its owner, or agree which new independent Supabase organization/project to use; never ask anyone to paste a service key into a chat.
+The old TechnoHome reviews project `dubkthkfebmoakmpxumh` is not accessible with the connected Supabase account. New independent database project **Techno Home Manager** has been created in a dedicated `Technohome` organization: `ilbvnkuubwmqpahtjiio` (Germany, EU). The `setup_technohome_manager_private_leads` migration is applied, and the `submit-inquiry` Edge Function has ACTIVE status. NOXA is isolated and unchanged.
 
 ## Activation sequence
 
-1. Verify ownership of the TechnoHome Supabase database (or create a dedicated independent one under an approved organization).
-2. Apply `supabase/setup-manager.sql` to the **TechnoHome** database only. Review policies with the Security Advisor. Test anonymous SELECT/UPDATE are denied. Review data retention requirements before going live.
+1. ✅ Created the separate Supabase project `ilbvnkuubwmqpahtjiio`, cost confirmed at €0/month at creation.
+2. ✅ Applied `supabase/setup-manager.sql` to the Technohome database only. Four tables have RLS. No anonymous SELECT/INSERT grants; an authenticated nonmanager sees zero inquiries. Security Advisor reports one informational rule (`technohome_rate_limits` has RLS enabled with no policy deliberately: it is server-only). Review data retention before enabling real leads.
 3. Create the technician's account in Supabase Auth Users with a strong private password, disable public signups. Add that account UUID to `technohome_managers` from a privileged SQL session.
 4. Generate a fresh VAPID key pair via a secure environment (`npx web-push generate-vapid-keys`). Save **private** key only in Supabase Functions secrets, never in GitHub/website. Add environment secrets:
    - `TH_RATE_SECRET`: strong random secret for hashing rate-limit IP addresses;
    - `TH_VAPID_PUBLIC_KEY`, `TH_VAPID_PRIVATE_KEY`, `TH_VAPID_SUBJECT=mailto:technohome.gr@gmail.com`.
    - `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are normally injected by the Functions runtime; confirm before deployment.
-5. Deploy `submit-inquiry` with `verify_jwt=false` as declared in `supabase/config.toml`. Its public CORS allowlist contains only `technohome.gr` and `www.technohome.gr`. Validate rate limiting and ensure the API only returns `ok` without customer data.
+5. ✅ Deployed `submit-inquiry` with `verify_jwt=false` as declared in `supabase/config.toml`; shows ACTIVE. The server-only Supabase service key is used as IP-hash pepper until an independent `TH_RATE_SECRET` is configured. Its CORS allowlist contains only `technohome.gr` and `www.technohome.gr`. **Still test real POST and spam throttling end-to-end before turning on public form.**
 6. In GitHub repository Settings -> Secrets and variables -> Actions -> **Variables** (NOT private secrets for these four public values):
    - `VITE_TH_MANAGER_SUPABASE_URL=https://<technohome-project-ref>.supabase.co`
    - `VITE_TH_MANAGER_SUPABASE_KEY=<publishable Supabase key, NOT service-role key>`
    - `VITE_TH_MANAGER_VAPID_PUBLIC_KEY=<public VAPID key>`
    - `VITE_TH_LEAD_ENDPOINT=https://<technohome-project-ref>.supabase.co/functions/v1/submit-inquiry`
    The workflow references them at build time. Never add a service role key to VITE/GitHub variables or source code.
-7. Deploy the application once all dependencies have passed tests, not before. Confirm all existing homepage SEO pages, robots and sitemap remain unchanged.
+7. ✅ Published the PWA shell at `/manager/` with email/password sign in. Public contact form remains in legacy Viber mode until safe backend validation. Confirm existing homepage SEO pages, robots and sitemap remain unchanged.
 8. On the technician's Android: open Chrome -> `https://technohome.gr/manager/` -> 3-dot menu -> **Install app / Προσθήκη στην αρχική οθόνη** -> sign in -> tap **Ενεργοποίηση** -> allow notifications. Android notification permissions and browser restrictions may vary.
 9. Test with a controlled inquiry (not real customer data). Verify: form success only after database insert, private dashboard refresh and status update, Android notification received with screen locked, WhatsApp/Viber links, login expiration, failed network, and spam rate limiting. Do NOT claim push works without an end-to-end test.
 
