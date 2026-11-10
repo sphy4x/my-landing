@@ -1,12 +1,18 @@
 import React from 'react';
 import { ArrowRight, Mail, MapPin, MessageCircle, Phone, UserRound } from 'lucide-react';
-import { BUSINESS, SERVICES } from '../src/siteContent.js';
+import { BUSINESS, SERVICES, FEATURED_SERVICES } from '../src/siteContent.js';
 
 const initialInquiry = { name: '', phone: '', service: '', area: '', details: '' };
+// Until the private backend has been deployed and tested, preserve Viber handoff.
+const leadEndpoint = import.meta.env.VITE_TH_LEAD_ENDPOINT || '';
 
 export default function Contact() {
   const [formData, setFormData] = React.useState(initialInquiry);
   const [status, setStatus] = React.useState('');
+  const [consent, setConsent] = React.useState(false);
+  const [website, setWebsite] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submissionFailed, setSubmissionFailed] = React.useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -15,15 +21,40 @@ export default function Contact() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const serviceTitle = SERVICES.find((service) => service.id === formData.service)?.title || 'Δεν επιλέχθηκε';
+    setSubmissionFailed(false);
+    setStatus('');
+
+    if (leadEndpoint) {
+      setIsSubmitting(true);
+      try {
+        const result = await fetch(leadEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...formData, consent, website })
+        });
+        if (!result.ok) throw new Error('Failed to submit request');
+        setStatus('Το αίτημά σας καταχωρίστηκε! Θα επικοινωνήσουμε μαζί σας.');
+        setFormData(initialInquiry);
+        setConsent(false);
+      } catch {
+        setStatus('Δεν ήταν δυνατή η αποστολή του αιτήματος. Δοκιμάστε ξανά ή επικοινωνήστε μέσω Viber.');
+        setSubmissionFailed(true);
+      } finally {
+        setIsSubmitting(false);
+      }
+      return;
+    }
+
+    const serviceTitle = [...SERVICES, ...FEATURED_SERVICES]
+      .find((service) => service.id === formData.service)?.title || 'Δεν επιλέχθηκε';
     const message = [
       'Νέο αίτημα από το TechnoHome.gr',
-      `Όνομα: ${formData.name}`,
-      `Τηλέφωνο: ${formData.phone}`,
-      `Υπηρεσία: ${serviceTitle}`,
-      `Περιοχή: ${formData.area || 'Δεν συμπληρώθηκε'}`,
-      `Περιγραφή: ${formData.details || 'Δεν συμπληρώθηκε'}`
-    ].join('\n');
+      'Όνομα: ' + formData.name,
+      'Τηλέφωνο: ' + formData.phone,
+      'Υπηρεσία: ' + serviceTitle,
+      'Περιοχή: ' + (formData.area || 'Δεν συμπληρώθηκε'),
+      'Περιγραφή: ' + (formData.details || 'Δεν συμπληρώθηκε')
+    ].join('\\n');
 
     try {
       await navigator.clipboard.writeText(message);
@@ -31,7 +62,6 @@ export default function Contact() {
     } catch {
       setStatus('Ανοίγει το Viber. Μπορείτε να στείλετε τα στοιχεία σας στη συνομιλία.');
     }
-
     window.location.href = BUSINESS.viberHref;
   };
 
@@ -97,7 +127,7 @@ export default function Contact() {
           <form className="inquiry-form" onSubmit={handleSubmit} data-reveal>
             <div className="inquiry-form-head">
               <span><MessageCircle size={22} aria-hidden="true" /></span>
-              <div><small>Γρήγορο αίτημα</small><h3>Στείλτε τα στοιχεία μέσω Viber</h3></div>
+              <div><small>Γρήγορο αίτημα</small><h3>{leadEndpoint ? 'Στείλτε το αίτημά σας' : 'Στείλτε τα στοιχεία μέσω Viber'}</h3></div>
             </div>
 
             <div className="inquiry-fields">
@@ -113,7 +143,7 @@ export default function Contact() {
                 <span>Υπηρεσία</span>
                 <select name="service" value={formData.service} onChange={handleChange} required>
                   <option value="">Επιλέξτε υπηρεσία</option>
-                  {SERVICES.map((service) => <option key={service.id} value={service.id}>{service.title}</option>)}
+                  {[...SERVICES, ...FEATURED_SERVICES].map((service) => <option key={service.id} value={service.id}>{service.title}</option>)}
                 </select>
               </label>
               <label>
@@ -126,11 +156,25 @@ export default function Contact() {
               </label>
             </div>
 
-            <p className="inquiry-note">Τα στοιχεία δεν αποθηκεύονται στον ιστότοπο. Αντιγράφονται στη συσκευή σας και ανοίγει το Viber.</p>
-            <button className="button inquiry-submit" type="submit">
-              Άνοιγμα στο Viber <ArrowRight size={18} aria-hidden="true" />
+            {leadEndpoint && (
+              <>
+                <div className="honeypot-field" aria-hidden="true">
+                  <label>Ιστότοπος<input name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} /></label>
+                </div>
+                <label className="consent-field">
+                  <input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} required />
+                  <span>Συμφωνώ με την επεξεργασία των στοιχείων μου για την επικοινωνία σχετικά με το αίτημα, σύμφωνα με την <a href="/privacy/">Πολιτική Απορρήτου</a>.</span>
+                </label>
+              </>
+            )}
+            <p className="inquiry-note">{leadEndpoint
+              ? 'Η προσφορά και το κόστος καθορίζονται μετά από εκτίμηση του χώρου από τον τεχνικό.'
+              : 'Τα στοιχεία δεν αποθηκεύονται στον ιστότοπο. Αντιγράφονται στη συσκευή σας και ανοίγει το Viber.'}</p>
+            <button className="button inquiry-submit" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Αποστολή...' : leadEndpoint ? 'Αποστολή αιτήματος' : 'Άνοιγμα στο Viber'} <ArrowRight size={18} aria-hidden="true" />
             </button>
             {status && <p className="inquiry-status" role="status">{status}</p>}
+            {submissionFailed && <p className="inquiry-status">Εναλλακτικά: <a href={BUSINESS.viberHref}>Επικοινωνία μέσω Viber</a></p>
           </form>
         </div>
 
