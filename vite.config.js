@@ -17,7 +17,8 @@ export default defineConfig({
         bathroom: resolve(import.meta.dirname, 'services/anakainisi-baniou/index.html'),
         renovation: resolve(import.meta.dirname, 'services/anakainiseis/index.html'),
         privacy: resolve(import.meta.dirname, 'privacy/index.html'),
-        terms: resolve(import.meta.dirname, 'terms/index.html')
+        terms: resolve(import.meta.dirname, 'terms/index.html'),
+        manager: resolve(import.meta.dirname, 'manager/index.html')
       }
     }
   }
