@@ -58,7 +58,9 @@ export default function Manager() {
   const [loadingAuth, setLoadingAuth] = React.useState(Boolean(isConfigured));
   const [allowed, setAllowed] = React.useState(false);
   const [checkingAccess, setCheckingAccess] = React.useState(false);
-  const [email, setEmail] = React.useState('');
+  const [email, setEmail] = React.useState('technohome.gr@gmail.com');
+  const [magicBusy, setMagicBusy] = React.useState(false);
+  const [magicSent, setMagicSent] = React.useState(false);
   const [password, setPassword] = React.useState('');
   const [authBusy, setAuthBusy] = React.useState(false);
   const [authError, setAuthError] = React.useState('');
@@ -119,6 +121,28 @@ export default function Manager() {
     const refresh = window.setInterval(() => { if (!document.hidden) fetchLeads(); }, 60000);
     return () => { window.clearInterval(refresh); document.removeEventListener('visibilitychange', handleVisibility); };
   }, [allowed, fetchLeads]);
+
+  async function sendLoginLink() {
+    if (!managerDb || magicBusy) return;
+    setMagicBusy(true);
+    setAuthError('');
+    setMagicSent(false);
+    try {
+      const { error } = await managerDb.auth.signInWithOtp({
+        email: 'technohome.gr@gmail.com',
+        options: {
+          shouldCreateUser: false,
+          emailRedirectTo: window.location.origin + '/manager/'
+        }
+      });
+      if (error) throw error;
+      setMagicSent(true);
+    } catch {
+      setAuthError('Δεν στάλθηκε το email. Ελέγξτε τη σύνδεσή σας ή δοκιμάστε αργότερα.');
+    } finally {
+      setMagicBusy(false);
+    }
+  }
 
   async function signIn(event) {
     event.preventDefault();
@@ -181,13 +205,22 @@ export default function Manager() {
         <span className="th-setup">Η πρόσβαση στα αιτήματα δεν είναι ακόμα ενεργή.</span>
       </div> : loadingAuth ? <div className="th-center"><div className="th-spinner"/> Έλεγχος σύνδεσης...</div> : !session ? <section className="th-login th-panel">
         <div className="th-greeting"><ShieldCheck size={36}/><h1>Σύνδεση διαχειριστή</h1><p>Ιδιωτική πρόσβαση στα αιτήματα πελατών της Techno Home.</p></div>
-        <form onSubmit={signIn}>
-          <label>Email<input type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@example.com" required/></label>
-          <label>Κωδικός<input type="password" minLength={8} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required/></label>
-          <button className="th-submit" disabled={authBusy} type="submit">{authBusy ? 'Σύνδεση...' : 'Σύνδεση'}</button>
-          <p className="th-session-note">Συνδεθείτε μία φορά. Η εφαρμογή θυμάται τη σύνδεσή σας σε αυτή τη συσκευή.</p>
+        <div className="th-login-by-email">
+          <p className="th-session-note">Μία μόνο σύνδεση από το email <strong>technohome.gr@gmail.com</strong>. Η εφαρμογή θα θυμάται τη συσκευή σας.</p>
+          <button className="th-submit" type="button" onClick={sendLoginLink} disabled={magicBusy}>
+            {magicBusy ? 'Αποστολή...' : 'Στείλτε μου σύνδεσμο εισόδου'}
+          </button>
+          {magicSent && <p className="th-success" role="status">Ανοίξτε το email σας και πατήστε τον σύνδεσμο εισόδου. Το Android θα διατηρεί τη σύνδεσή σας.</p>}
           {authError && <p className="th-error" role="alert">{authError}</p>}
-        </form>
+        </div>
+        <details className="th-password-login">
+          <summary>Σύνδεση με κωδικό (εναλλακτικά)</summary>
+          <form onSubmit={signIn}>
+            <label>Email<input type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@example.com" required/></label>
+            <label>Κωδικός<input type="password" minLength={8} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required/></label>
+            <button className="th-submit" disabled={authBusy} type="submit">{authBusy ? 'Σύνδεση...' : 'Σύνδεση'}</button>
+          </form>
+        </details>
       </section> : checkingAccess ? <div className="th-center">Έλεγχος δικαιωμάτων...</div> : !allowed ? <div className="th-center th-panel">
         <ShieldCheck size={34}/><h1>Δεν υπάρχει πρόσβαση</h1>
         <p>Ο λογαριασμός δεν είναι καταχωρισμένος ως διαχειριστής Techno Home.</p>
