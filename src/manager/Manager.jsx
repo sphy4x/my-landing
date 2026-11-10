@@ -180,7 +180,7 @@ export default function Manager() {
         <button className="th-submit" onClick={signOut}>Αποσύνδεση</button>
       </div> : <>
         <section className="th-dashboard-head">
-          <div className="th-heading"><small>ΚΕΝΤΡΟ ΑΙΤΗΜΑΤΩΝ</small><h1>Καλησπέρα, Κώστα <span>👋</span></h1><p>Όλες οι επικοινωνίες, σε ένα σημείο.</p></div>
+          <div className="th-heading"><small>ΚΕΝΤΡΟ ΑΙΤΗΜΑΤΩΝ</small><h1>Καλώς ήρθες, Κώστα <span>👋</span></h1><p>Όλες οι επικοινωνίες, σε ένα σημείο.</p></div>
           <button className="th-refresh" onClick={fetchLeads} disabled={fetching}><RefreshCw size={18} className={fetching ? 'th-spinning' : ''}/> Ανανέωση</button>
         </section>
         <div className="th-stats">
