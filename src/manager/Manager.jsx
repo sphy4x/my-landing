@@ -3,7 +3,7 @@ import {
   Bell, Check, CheckCircle2, Clock3, Filter, House, LogOut, MessageCircle,
   Phone, RefreshCw, ShieldCheck, Smartphone, UserRound, Wrench
 } from 'lucide-react';
-import { clientPhone, enableManagerPush, humanService, isConfigured, managerDb } from './client.js';
+import { clientPhone, enableManagerPush, humanService, isConfigured, managerDb, vapidPublicKey } from './client.js';
 
 const STATUS = {
   new: { label: 'Νέα', icon: Bell },
@@ -190,7 +190,7 @@ export default function Manager() {
         </div>
         <div className="th-push-banner">
           <div><Smartphone size={22}/><div><strong>Ειδοποιήσεις στο Android</strong><p>Ενημέρωση για κάθε νέο αίτημα, ακόμη κι αν δεν είναι ανοιχτή η εφαρμογή.</p></div></div>
-          <button onClick={activatePush} disabled={pushBusy || pushEnabled}>{pushEnabled ? <><Check size={15}/> Ενεργές</> : pushBusy ? 'Ρύθμιση...' : 'Ενεργοποίηση'}</button>
+          <button onClick={activatePush} disabled={!vapidPublicKey || pushBusy || pushEnabled}>{!vapidPublicKey ? 'Σύντομα' : pushEnabled ? <><Check size={15}/> Ενεργές</> : pushBusy ? 'Ρύθμιση...' : 'Ενεργοποίηση'}</button>
         </div>
         {feedback && <p className="th-error" role="alert">{feedback}</p>}
         <section aria-label="Αιτήματα" className="th-inquiries">
