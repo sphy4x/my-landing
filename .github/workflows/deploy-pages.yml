@@ -32,6 +32,11 @@ jobs:
         run: npm ci
 
       - name: Build production site
+        env:
+          VITE_TH_LEAD_ENDPOINT: ${{ vars.VITE_TH_LEAD_ENDPOINT }}
+          VITE_TH_MANAGER_SUPABASE_URL: ${{ vars.VITE_TH_MANAGER_SUPABASE_URL }}
+          VITE_TH_MANAGER_SUPABASE_KEY: ${{ vars.VITE_TH_MANAGER_SUPABASE_KEY }}
+          VITE_TH_MANAGER_VAPID_PUBLIC_KEY: ${{ vars.VITE_TH_MANAGER_VAPID_PUBLIC_KEY }}
         run: npm run build
 
       - name: Configure GitHub Pages

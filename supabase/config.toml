@@ -1,0 +1,4 @@
+# Only the customer-facing inquiry handler is public.
+# Read operations remain protected by Supabase Auth + RLS.
+[functions.submit-inquiry]
+verify_jwt = false
