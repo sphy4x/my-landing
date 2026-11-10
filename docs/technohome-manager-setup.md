@@ -52,3 +52,12 @@ The old TechnoHome reviews project `dubkthkfebmoakmpxumh` is not accessible with
 - Manual refresh plus automatic refresh while screen is open
 
 **Not included:** prices, quotes, customer accounts, advertising, image uploads, AI chat, payment processing or any paid Viber integrations.
+
+## Technician onboarding — 11 November 2026
+
+- Invited `technohome.gr@gmail.com` via Supabase Auth admin invite; the associated user now exists and is explicitly whitelisted in `technohome_managers`. The invitation has **not yet been accepted** (email unconfirmed at last check).
+- Ephemeral single-use onboarding Edge Function was disabled immediately after generating the invite. Its endpoint now returns HTTP 410 and cannot create users.
+- The Manager app offers `signInWithOtp` for the **fixed technician email** and persists the Supabase session in Chrome on Android. After authentication, opening the installed PWA again should not require re-entering an email or password.
+- `detectSessionInUrl: true` enables processing of emailed verification/magic links. For links to return directly to `/manager/`, Supabase Auth URL Configuration must allow `https://technohome.gr/manager/` as a redirect URL (check the live project settings). If an invite points elsewhere, add the URL in the Supabase Dashboard and resend a link using the Manager page.
+- Invitation creation does **not** prove email delivery. Confirm with technician that the email was received and click the link only on his trusted Android device; check spam if needed.
+- No customer-facing form migration or Web Push enablement until full end-to-end verification.
