@@ -54,7 +54,7 @@ export default function Contact() {
       'Υπηρεσία: ' + serviceTitle,
       'Περιοχή: ' + (formData.area || 'Δεν συμπληρώθηκε'),
       'Περιγραφή: ' + (formData.details || 'Δεν συμπληρώθηκε')
-    ].join('\\n');
+    ].join('\n');
 
     try {
       await navigator.clipboard.writeText(message);
