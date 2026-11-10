@@ -123,14 +123,27 @@ export default function Manager() {
   async function signIn(event) {
     event.preventDefault();
     setAuthBusy(true); setAuthError('');
-    const { error } = await managerDb.auth.signInWithPassword({ email: email.trim(), password });
-    if (error) setAuthError('Λανθασμένα στοιχεία ή μη διαθέσιμη σύνδεση.');
-    setAuthBusy(false);
+    // Ask Android Chrome to preserve the installed app's origin storage when possible.
+    // Session tokens themselves are stored and refreshed by Supabase Auth.
+    if (navigator.storage && typeof navigator.storage.persist === 'function') {
+      navigator.storage.persist().catch(() => {});
+    }
+    try {
+      const { error } = await managerDb.auth.signInWithPassword({ email: email.trim(), password });
+      if (error) setAuthError('Λανθασμένα στοιχεία ή μη διαθέσιμη σύνδεση.');
+      else setPassword('');
+    } catch {
+      setAuthError('Προσωρινή δυσκολία σύνδεσης. Δοκιμάστε ξανά.');
+    } finally {
+      setAuthBusy(false);
+    }
   }
 
   async function signOut() {
-    setLeads([]); setAllowed(false); setPushEnabled(false);
+    // Prevent accidental logout: normally the technician never needs to sign in again.
+    if (!window.confirm('Θέλετε σίγουρα να αποσυνδεθείτε; Θα χρειαστείτε τον κωδικό για να μπείτε ξανά.')) return;
     await managerDb.auth.signOut();
+    setLeads([]); setAllowed(false); setPushEnabled(false);
   }
 
   async function updateStatus(id, status) {
@@ -172,6 +185,7 @@ export default function Manager() {
           <label>Email<input type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@example.com" required/></label>
           <label>Κωδικός<input type="password" minLength={8} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required/></label>
           <button className="th-submit" disabled={authBusy} type="submit">{authBusy ? 'Σύνδεση...' : 'Σύνδεση'}</button>
+          <p className="th-session-note">Συνδεθείτε μία φορά. Η εφαρμογή θυμάται τη σύνδεσή σας σε αυτή τη συσκευή.</p>
           {authError && <p className="th-error" role="alert">{authError}</p>}
         </form>
       </section> : checkingAccess ? <div className="th-center">Έλεγχος δικαιωμάτων...</div> : !allowed ? <div className="th-center th-panel">
