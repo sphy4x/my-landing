@@ -68,8 +68,10 @@ Deno.serve(async (req) => {
 
   const supabaseUrl = Deno.env.get('SUPABASE_URL');
   const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  const rateSecret = Deno.env.get('TH_RATE_SECRET');
-  if (!supabaseUrl || !serviceKey || !rateSecret) {
+  // Optional dedicated pepper; fall back to Supabase's server-only service key.
+  // Neither value is sent to the browser or stored with inquiries.
+  const rateSecret = Deno.env.get('TH_RATE_SECRET') || serviceKey;
+  if (!supabaseUrl || !serviceKey) {
     console.error('Required TechnoHome backend configuration missing');
     return response({ ok: false, message: 'Προσωρινή τεχνική δυσκολία.' }, 503, origin);
   }
